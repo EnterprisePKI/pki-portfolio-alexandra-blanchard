@@ -1,5 +1,11 @@
 # Week X Lesson Notes — [Topic Title]
 
+Document the following in your Week 2 lab notes:
+
+Why the encrypted file is unreadable
+What would happen if the wrong password were used
+What security property symmetric encryption provides
+Why TLS uses symmetric encryption for data transfer
 ## 1. Core Concept
 
 Explain the foundational concept clearly and practically.
