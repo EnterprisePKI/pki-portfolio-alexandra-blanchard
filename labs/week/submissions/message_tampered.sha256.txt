@@ -1,0 +1,1 @@
+﻿SHA2-256(labs/02-week-02-cryptography-fundamentals/submissions/hashes/message.txt)= 253c13cbd8acda5bcc6beb38fa9dc96340a3a872e9b927b367d7ed623d25e16c
