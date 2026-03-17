@@ -2,7 +2,7 @@
 openssl x509 -in lab/03-week-03-certificate-anatomy/submissions/certificate-fields/leaf_cert.pem -text -noout
 Could not open file or uri for loading certificate from lab/03-week-03-certificate-anatomy/submissions/certificate-fields/leaf_cert.pem: No such file or directory
 
-# removed the .txt
+removed the .txt
 
 PS C:\Users\Cyber> openssl x509 -in lab/03-week-03-certificate-anatomy/submissions/certificate-fields/leaf_cert.pem -text -noout
 Certificate:
