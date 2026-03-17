@@ -91,3 +91,15 @@ Certificate:
         80:69:25:bb:62:19:fe:8a:84:33:4d:b0:3b:7f:15:68:e7:c5:
         a0:cd:45:c5:cb:94:4b:8c:50:bc:66:42:71:74:64:80:04:39:
         fb:95:69:f4
+
+
+
+
+Observations
+Document the following in your Week 3 lab notes:
+
+Who issued the certificate
+What organization or domain the certificate represents
+What public key algorithm is used
+When the certificate expires
+Why the issuer field is important in PKI
