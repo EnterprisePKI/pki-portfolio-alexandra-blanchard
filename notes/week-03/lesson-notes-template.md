@@ -42,3 +42,12 @@ How this concept appears in real enterprise environments.
 Short summary that ties the week back to:
 
 Identity + Trust + Verification
+
+Observations
+Document the following in your Week 3 lab notes:
+
+Which certificate is the root CA
+Which certificate is the intermediate CA
+Which certificate is the leaf certificate
+How the issuer field connects the certificates
+Why intermediate certificates exist
