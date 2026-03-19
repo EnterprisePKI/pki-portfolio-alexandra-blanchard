@@ -1,92 +1,116 @@
-# Lab — Symmetric Encryption (Confidentiality)
+# Lab — [Lab Title]
 
-## Goal
-
-This lab builds operational understanding of symmetric encryption and the security property of confidentiality.
-
-You will:
-
-- Encrypt a file using AES
-- Decrypt it back to its original form
-- Observe how ciphertext differs from plaintext
-- Understand why symmetric encryption is used in TLS for bulk data protection
+## Overview
+Briefly describe the purpose of this lab in your own words.
+What PKI concept or system behavior were you investigating?
 
 ---
 
-## Part 1 — Setup
+## Environment
+Document the environment used to complete the lab.
 
-### Prerequisites
-
-- OpenSSL installed
-- Access to a local terminal (Mac Terminal, Git Bash, or WSL)
-- Your Week 2 portfolio folder created
-
-All commands must be executed locally.  
-GitHub’s web interface cannot run OpenSSL commands.
+- Operating System:
+- Terminal Used:
+- OpenSSL Version (if applicable):
 
 ---
 
-## Part 2 — Execution Steps
+## Steps Performed
+Summarize the key steps you performed to complete the lab.
 
-### Step 1 — Create Artifact Directory
-From the root of your directory:
-mkdir -p labs/02-week-02-cryptography-fundamentals/submissions/encrypted
+Do **not copy the lab instructions**.
+Describe what you actually did.
 
-### Step 2 — Create a Plaintext File
-echo "Week 2 Symmetric Encryption Lab - CVI" > labs/02-week-02-cryptography-fundamentals/submissions/encrypted/plaintext.txt
+1.
+2.
+3.
 
-Open the file and confirm it is readable.
+---
 
-### Step 3 — Encrypt the File
-Use AES-256 encryption with password-based key derivation:
+## Results
+Include the important outputs or findings from the lab.
 
-openssl enc -aes-256-cbc -salt -pbkdf2 \
-  -in labs/02-week-02-cryptography-fundamentals/submissions/encrypted/plaintext.txt \
-  -out labs/02-week-02-cryptography-fundamentals/submissions/encrypted/plaintext.txt.enc
+Examples may include:
 
-You will be prompted for a password.
+- Command outputs
+- Certificate fields or values
+- Verification results
+- Screenshots (if applicable)
 
-Observe:
-- The encrypted file is unreadable.
-- It contains binary ciphertext.
+If you include screenshots, store them in `assets/screenshots/` at the root of your repo and reference them here.
 
-### Step 4 — Decrypt the File
-openssl enc -d -aes-256-cbc -pbkdf2 \
-  -in labs/02-week-02-cryptography-fundamentals/submissions/encrypted/plaintext.txt.enc \
-  -out labs/02-week-02-cryptography-fundamentals/submissions/encrypted/plaintext.decrypted.txt
+**How to embed an image:**
 
-Enter the same password used during encryption.
+**Option A — Terminal / Local Editor**
 
-### Step 5 — Verify Integrity of Decrypted File
-diff labs/02-week-02-cryptography-fundamentals/submissions/encrypted/plaintext.txt \
-     labs/02-week-02-cryptography-fundamentals/submissions/encrypted/plaintext.decrypted.txt
+Save your screenshot to `assets/screenshots/` in your repo, then reference it using a relative path from your submission file:
 
-If no output appears, the files are identical.
+```markdown
+![Description of your screenshot](../../../assets/screenshots/your-filename.png)
+```
 
-## Part 3 — Observations
-Document the following in your Week 2 lab notes:
-- Why the encrypted file is unreadable
-- What would happen if the wrong password were used
-- What security property symmetric encryption provides
-- Why TLS uses symmetric encryption for data transfer
+> The `../../../` moves up three levels: `submissions/` → `week-03/` → `labs/` → repo root, then into `assets/screenshots/`.
 
-### Submission (Portfolio Repo)
-Ensure the following files exist:
+**Option B — GitHub Web (Easiest)**
 
-labs/02-week-02-cryptography-fundamentals/submissions/encrypted/
-  plaintext.txt
-  plaintext.txt.enc
-  plaintext.decrypted.txt
+Open your `.md` file on GitHub, click the pencil icon to edit, then **drag and drop your image directly into the text editor**. GitHub will upload it automatically and insert the correct link for you.
 
-Commit and push your changes.
+Example of what an embedded image looks like:
 
-Do NOT commit any passwords.
+```markdown
+![Certificate output showing SAN field](../../../assets/screenshots/san-field.png)
+```
 
-## Stretch (Optional)
-Try decrypting the file using an incorrect password.
+---
 
-What error message do you receive?
-Why does decryption fail?
+## Key Findings
+Document the most important observations from the lab.
 
-CVI PKI Career Pathway — Foundations Phase
+Examples:
 
+- What you discovered about the certificate, key, or protocol
+- How a specific field or extension affected the outcome
+- What a validation result indicated
+- Any unexpected behavior or results
+
+-
+-
+-
+
+---
+
+## Explanation
+Explain **why the results matter**.
+
+Examples:
+
+- Why a specific field or extension is required
+- Why a validation succeeded or failed
+- What the result means in a real-world PKI context
+- How this connects to the week's learning outcomes
+
+---
+
+## Challenges / Troubleshooting
+Document any issues encountered during the lab and how you resolved them.
+
+Examples:
+
+- Command errors
+- Missing files or dependencies
+- Verification failures and how you diagnosed them
+
+---
+
+## Artifacts
+List the files generated or submitted during this lab.
+
+Examples:
+
+- Any `.pem`, `.crt`, or `.key` files produced
+- Your completed lab write-up `.md` file
+- Screenshots stored in `assets/screenshots/`
+
+---
+
+*CVI PKI Career Pathway — Foundations Phase*
