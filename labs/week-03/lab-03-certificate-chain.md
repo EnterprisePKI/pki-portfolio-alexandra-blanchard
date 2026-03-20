@@ -1,181 +1,116 @@
-# Lab — Verify a Certificate Chain
+# Lab — [Lab Title]
 
-## Goal
-
-This lab builds operational understanding of how certificate chains establish trust in Public Key Infrastructure.
-
-You will:
-- Inspect multiple certificates in a trust hierarchy
-- Identify the root, intermediate, and leaf certificates
-- Verify a certificate chain using OpenSSL
-- Understand how browsers validate certificate trust
+## Overview
+Briefly describe the purpose of this lab in your own words.
+What PKI concept or system behavior were you investigating?
 
 ---
 
-## Part 1 — Setup
+## Environment
+Document the environment used to complete the lab.
 
-### Prerequisites
-
-- OpenSSL installed
-- Access to a local terminal (Mac Terminal, Git Bash, or WSL)
-- Completion of **Lab 01 and Lab 02**
-
-All commands must be executed locally.  
-GitHub’s web interface cannot run OpenSSL commands.
+- Operating System:
+- Terminal Used:
+- OpenSSL Version (if applicable):
 
 ---
 
-## Part 2 — Execution Steps
+## Steps Performed
+Summarize the key steps you performed to complete the lab.
 
-### Step 1 — Create Artifact Directory
-From the root of your directory on your personal machine:
-- mkdir -p lab/03-week-03-certificate-anatomy/submissions/certificate-chain
+Do **not copy the lab instructions**.
+Describe what you actually did.
 
----
-
-### Step 2 —Obtain a Certificate Chain
-Use OpenSSL to retrieve a certificate chain from a website.
-
-Run:
-
-openssl s_client -connect github.com:443 -showcerts
-
-You will see **multiple certificates** returned.
-
-Typically:
-
-1. Leaf certificate (website)
-2. Intermediate certificate
-3. Root certificate (sometimes omitted)
-
-Each certificate block looks like:
-
------BEGIN CERTIFICATE-----
-...
------END CERTIFICATE-----.
+1.
+2.
+3.
 
 ---
 
-### Step 3 — Save the Certificates
-Create the following files inside:
+## Results
+Include the important outputs or findings from the lab.
 
-- lab/03-week-03-certificate-anatomy/submissions/certificate-chain/
-    - server.pem
-    - intermediate.pem
-    - root.pem
+Examples may include:
 
-**Save each certificate separately.**
+- Command outputs
+- Certificate fields or values
+- Verification results
+- Screenshots (if applicable)
 
-If the root certificate is not included in the output, download it from the issuing CA’s website.
+If you include screenshots, store them in `assets/screenshots/` at the root of your repo and reference them here.
 
----
+**How to embed an image:**
 
-### Step 4 — Inspect Each Certificate
-Run the following command for each certificate:
+**Option A — Terminal / Local Editor**
 
-openssl x509 -in server.pem -text -noout
+Save your screenshot to `assets/screenshots/` in your repo, then reference it using a relative path from your submission file:
 
-Repeat for:
+```markdown
+![Description of your screenshot](../../../assets/screenshots/your-filename.png)
+```
 
-intermediate.pem
-root.pem
+> The `../../../` moves up three levels: `submissions/` → `week-03/` → `labs/` → repo root, then into `assets/screenshots/`.
 
-Observe the following fields:
-- **Subject**
-- **Issuer**
-- **Basic Constraints**
-- **Key Usage**
+**Option B — GitHub Web (Easiest)**
 
-These fields help determine the role of each certificate.
+Open your `.md` file on GitHub, click the pencil icon to edit, then **drag and drop your image directly into the text editor**. GitHub will upload it automatically and insert the correct link for you.
 
----
+Example of what an embedded image looks like:
 
-### Step 5 — Identify Certificate Roles
-Determine which certificate represents:
-
-**Root CA**	 - Trust anchor stored in operating systems
-**Intermediate CA**	- Certificate authority that issues leaf certificates
-**Leaf Certificate** - The certificate used by the website
-
-A key indicator:
-
-  Basic Constraints: CA:TRUE
-
-Certificates with **CA:TRUE** can issue other certificates.
-
-Leaf certificates typically contain:
-
-  CA:FALSE
+```markdown
+![Certificate output showing SAN field](../../../assets/screenshots/san-field.png)
+```
 
 ---
 
-### Step 6 — Verify the Certificate Chain
-Now verify the certificate chain using OpenSSL.
+## Key Findings
+Document the most important observations from the lab.
 
-Run:
+Examples:
 
-  openssl verify -CAfile root.pem -untrusted intermediate.pem server.pem
+- What you discovered about the certificate, key, or protocol
+- How a specific field or extension affected the outcome
+- What a validation result indicated
+- Any unexpected behavior or results
 
-Expected output:
-
-server.pem: OK
-
-This confirms that the server certificate can be trusted through the chain.
-
----
-
-## Part 3 — Observations
-Document the following in your **Week 3 lab notes**:
-- Which certificate is the root CA
-- Which certificate is the intermediate CA
-- Which certificate is the leaf certificate
-- How the issuer field connects the certificates
-- Why intermediate certificates exist
+-
+-
+-
 
 ---
 
-### Submission (Portfolio Repo)
-Ensure the following files exist:
+## Explanation
+Explain **why the results matter**.
 
-lab/03-week-03-certificate-anatomy/submissions/certificate-chain/
-  - server.pem
-  - intermediate.pem
-  - root.pem
+Examples:
 
-Update your certificate-chain.md file in your submissions folder with your observations.
-
-Example commit message:
-
-Week 3 Lab 03 — Verified certificate chain
+- Why a specific field or extension is required
+- Why a validation succeeded or failed
+- What the result means in a real-world PKI context
+- How this connects to the week's learning outcomes
 
 ---
 
+## Challenges / Troubleshooting
+Document any issues encountered during the lab and how you resolved them.
 
-## Stretch (Optional)
-Try verifying the server certificate **without the intermediate certificate.**
+Examples:
 
-Run:
-
-  openssl verify -CAfile root.pem server.pem
-
-Questions to consider:
-- Does verification fail?
-- Why is the intermediate certificate necessary?
-- How do browsers obtain missing intermediate certificates?
+- Command errors
+- Missing files or dependencies
+- Verification failures and how you diagnosed them
 
 ---
 
-## Why This Matters
-Every TLS connection relies on **certificate chain validation.**
+## Artifacts
+List the files generated or submitted during this lab.
 
-Browsers must verify that:
+Examples:
 
-1. The server certificate is valid
-2. It was issued by a trusted intermediate CA
-3. The intermediate traces back to a trusted root CA
-
-If any link in the chain fails, the connection is rejected.
+- Any `.pem`, `.crt`, or `.key` files produced
+- Your completed lab write-up `.md` file
+- Screenshots stored in `assets/screenshots/`
 
 ---
 
-CVI PKI Career Pathway — Foundations Phase
+*CVI PKI Career Pathway — Foundations Phase*
