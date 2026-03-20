@@ -1,121 +1,116 @@
-# Lab — Inspect X.509 Certificate Fields
+# Lab — [Lab Title]
 
-## Goal
-
-This lab builds operational understanding of how to read and interpret the core fields of an X.509 certificate.
-
-You will:
-
-- Retrieve a certificate from a live website
-- Parse the certificate using OpenSSL
-- Identify the core certificate fields
-- Understand how certificates represent digital identity in PKI systems
+## Overview
+Briefly describe the purpose of this lab in your own words.
+What PKI concept or system behavior were you investigating?
 
 ---
 
-## Part 1 — Setup
+## Environment
+Document the environment used to complete the lab.
 
-### Prerequisites
-
-- OpenSSL installed
-- Access to a local terminal (Mac Terminal, Git Bash, or WSL)
-- Your Week 3 portfolio folder created
-
-All commands must be executed locally.  
-GitHub’s web interface cannot run OpenSSL commands.
+- Operating System:
+- Terminal Used:
+- OpenSSL Version (if applicable):
 
 ---
 
-## Part 2 — Execution Steps 
+## Steps Performed
+Summarize the key steps you performed to complete the lab.
 
-### Step 1 — Create Artifact Directory
-From the root of your local directory on your personal machine:
-- mkdir -p lab/03-week-03-certificate-anatomy/submissions/certificate-fields
+Do **not copy the lab instructions**.
+Describe what you actually did.
 
-### Step 2 — Retrieve a Website Certificate
-Use OpenSSL to connect to a website and retrieve its certificate.
-
-openssl s_client -connect google.com:443 -showcerts
-
-You will see several certificates displayed in the terminal.
-
-Locate the **first certificate block**, which represents the **leaf certificate.**
-
-It will look similar to:
-
------BEGIN CERTIFICATE-----
-MIIF...
------END CERTIFICATE-----
-
-Copy the entire certificate block.
-
-Save it as:
-
-leaf_cert.pem
-
-Place the file in:
-
-lab/03-week-03-certificate-anatomy/submissions/certificate-fields/
-
-### Step 3 — Parse the Certificate
-Use OpenSSL to inspect the certificate contents.
-
-openssl x509 -in lab/03-week-03-certificate-anatomy/submissions/certificate-fields/leaf_cert.pem -text -noout
-
-This command converts the encoded certificate into a human-readable format.
-
-### Step 4 — Identify Core Certificate Fields
-Locate and record the following fields in the output:
-- Version
-- Serial Number
-- Signature Algorithm
-- Issuer
-- Subject
-- Validity Period (Not Before / Not After)
-- Public Key Algorithm
-
-These fields define the **identity and trust attributes** of the certificate.
+1.
+2.
+3.
 
 ---
 
-## Part 3 — Observations
-Document the following in your Week 3 lab notes:
-- Who issued the certificate
-- What organization or domain the certificate represents
-- What public key algorithm is used
-- When the certificate expires
-- Why the issuer field is important in PKI
+## Results
+Include the important outputs or findings from the lab.
+
+Examples may include:
+
+- Command outputs
+- Certificate fields or values
+- Verification results
+- Screenshots (if applicable)
+
+If you include screenshots, store them in `assets/screenshots/` at the root of your repo and reference them here.
+
+**How to embed an image:**
+
+**Option A — Terminal / Local Editor**
+
+Save your screenshot to `assets/screenshots/` in your repo, then reference it using a relative path from your submission file:
+
+```markdown
+![Description of your screenshot](../../../assets/screenshots/your-filename.png)
+```
+
+> The `../../../` moves up three levels: `submissions/` → `week-03/` → `labs/` → repo root, then into `assets/screenshots/`.
+
+**Option B — GitHub Web (Easiest)**
+
+Open your `.md` file on GitHub, click the pencil icon to edit, then **drag and drop your image directly into the text editor**. GitHub will upload it automatically and insert the correct link for you.
+
+Example of what an embedded image looks like:
+
+```markdown
+![Certificate output showing SAN field](../../../assets/screenshots/san-field.png)
+```
 
 ---
 
-### Submission (Portfolio Repo)
-Ensure the following file exists:
+## Key Findings
+Document the most important observations from the lab.
 
-lab/03-week-03-certificate-anatomy/submissions/certificate-fields/
-  leaf_cert.pem
+Examples:
 
-Update your certificate-inspection.md file in your submissions folder with your observations.
+- What you discovered about the certificate, key, or protocol
+- How a specific field or extension affected the outcome
+- What a validation result indicated
+- Any unexpected behavior or results
 
-Example commit message:
-
-  Week 3 Lab 01 — Inspect Certificate Fields
-
----
-
-## Stretch (Optional)
-Try retrieving a certificate from a different website:
-
-openssl s_client -connect github.com:443 -showcerts
-
-Compare the certificate fields.
-
-Questions to consider:
-- Do the issuer fields match?
-- Do both certificates use the same public key algorithm?
-- Do the validity periods differ?
+-
+-
+-
 
 ---
 
-CVI PKI Career Pathway — Foundations Phase
+## Explanation
+Explain **why the results matter**.
 
+Examples:
 
+- Why a specific field or extension is required
+- Why a validation succeeded or failed
+- What the result means in a real-world PKI context
+- How this connects to the week's learning outcomes
+
+---
+
+## Challenges / Troubleshooting
+Document any issues encountered during the lab and how you resolved them.
+
+Examples:
+
+- Command errors
+- Missing files or dependencies
+- Verification failures and how you diagnosed them
+
+---
+
+## Artifacts
+List the files generated or submitted during this lab.
+
+Examples:
+
+- Any `.pem`, `.crt`, or `.key` files produced
+- Your completed lab write-up `.md` file
+- Screenshots stored in `assets/screenshots/`
+
+---
+
+*CVI PKI Career Pathway — Foundations Phase*
