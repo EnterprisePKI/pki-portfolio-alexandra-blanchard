@@ -1,147 +1,116 @@
-# Lab — Extract a Certificate from a Live Website (Optional)
+# Lab — [Lab Title]
 
-## Goal
-
-This optional lab demonstrates how to retrieve and inspect a live TLS certificate from a website.
-
-You will:
-- Connect to a website using OpenSSL
-- Retrieve the certificate presented during the TLS handshake
-- Save the certificate locally
-- Inspect the certificate fields and extensions
-
-This process mirrors how security engineers analyze certificates during **TLS troubleshooting and incident response.**
+## Overview
+Briefly describe the purpose of this lab in your own words.
+What PKI concept or system behavior were you investigating?
 
 ---
 
-## Part 1 — Setup
+## Environment
+Document the environment used to complete the lab.
 
-### Prerequisites
-- OpenSSL installed
-- Access to a local terminal (Mac Terminal, PowerShell, Git Bash, or WSL)
-- Completion of **Lab 01 and Lab 02 recommended**
-
-All commands must be executed locally.
-
-GitHub’s web interface cannot run OpenSSL commands.
+- Operating System:
+- Terminal Used:
+- OpenSSL Version (if applicable):
 
 ---
 
-## Part 2 — Execution Steps
+## Steps Performed
+Summarize the key steps you performed to complete the lab.
 
-### Step 1 — Create Artifact Directory
-From the root of your repository on your personal machine:
+Do **not copy the lab instructions**.
+Describe what you actually did.
 
-mkdir -p lab/03-week-03-certificate-anatomy/submissions/live-certificate-analysis
-
----
-
-### Step 2 — Connect to a Website
-Use OpenSSL to establish a TLS connection and retrieve the certificate chain.
-
-Run:
-
-  openssl s_client -connect github.com:443 -showcerts
-
-You will see several certificate blocks printed in the terminal.
-
-Each certificate block will look like:
-
------BEGIN CERTIFICATE-----
-...
------END CERTIFICATE-----
-
-The **first certificate in the list** is the **leaf certificate** used by the website.
+1.
+2.
+3.
 
 ---
 
-### Step 3 — Save the Certificate
-Copy the first certificate block and save it as:
+## Results
+Include the important outputs or findings from the lab.
 
-  github_cert.pem
+Examples may include:
 
-Place the file inside:
+- Command outputs
+- Certificate fields or values
+- Verification results
+- Screenshots (if applicable)
 
-lab/03-week-03-certificate-anatomy/submissions/live-certificate-analysis/
+If you include screenshots, store them in `assets/screenshots/` at the root of your repo and reference them here.
 
----
+**How to embed an image:**
 
-### Step 4 — Inspect the Certificate
-Run the following command to view the certificate details:
+**Option A — Terminal / Local Editor**
 
-  openssl x509 -in lab/03-week-03-certificate-anatomy/submissions/live-certificate-analysis/github_cert.pem -text -noout
+Save your screenshot to `assets/screenshots/` in your repo, then reference it using a relative path from your submission file:
 
-This command converts the encoded certificate into a human-readable format.
+```markdown
+![Description of your screenshot](../../../assets/screenshots/your-filename.png)
+```
 
----
+> The `../../../` moves up three levels: `submissions/` → `week-03/` → `labs/` → repo root, then into `assets/screenshots/`.
 
-### Step 5 — Analyze the Certificate
-Identify the following information:
-- **Subject**
-- **Issuer**
-- **Validity Period**
-- **Public Key Algorithm**
-- **Subject Alternative Name (SAN)**
-- **Key Usage**
-- **Extended Key Usage**
+**Option B — GitHub Web (Easiest)**
 
-These fields define the **identity and usage rules** of the certificate.
+Open your `.md` file on GitHub, click the pencil icon to edit, then **drag and drop your image directly into the text editor**. GitHub will upload it automatically and insert the correct link for you.
 
----
+Example of what an embedded image looks like:
 
-## Part 3 — Misconfiguration Scenarios
-In your repo create a file named:
-
-  live-certificate-analysis.md
-
-Inside the same folder:
-
-  lab/03-week-03-certificate-anatomy/submissions/live-certificate-analysis/
-
-Document:
-- The organization the certificate belongs to
-- Which certificate authority issued the certificate
-- The expiration date of the certificate
-- The domains listed in the SAN field
-- What the certificate is allowed to be used for
+```markdown
+![Certificate output showing SAN field](../../../assets/screenshots/san-field.png)
+```
 
 ---
 
-## Submission (Portfolio Repo)
-Ensure the following files exist:
+## Key Findings
+Document the most important observations from the lab.
 
-labs/03-week-03-certificate-anatomy/submissions/live-certificate-analysis/
-  github_cert.pem
-  live-certificate-analysis.md
+Examples:
 
-Example commit message:
+- What you discovered about the certificate, key, or protocol
+- How a specific field or extension affected the outcome
+- What a validation result indicated
+- Any unexpected behavior or results
 
-  Week 3 Lab 05 — Extract and analyze live TLS certificate
-
----
-
-## Stretch (Optional)
-Retrieve certificates from additional websites:
-
-  openssl s_client -connect google.com:443 -showcerts
-  openssl s_client -connect cloudflare.com:443 -showcerts
-
-Compare the certificates and consider:
-- Do they use the same certificate authority?
-- Do they use the same public key algorithm?
-- Do they contain similar SAN entries?
+-
+-
+-
 
 ---
 
-## Why This Matters
-Security engineers frequently inspect certificates from live systems when troubleshooting:
-- TLS connection failures
-- Certificate expiration issues
-- Misconfigured certificate chains
-- Hostname validation errors
+## Explanation
+Explain **why the results matter**.
 
-Being able to retrieve and analyze certificates directly from a TLS connection is an essential skill in **PKI operations and security engineering.**
+Examples:
+
+- Why a specific field or extension is required
+- Why a validation succeeded or failed
+- What the result means in a real-world PKI context
+- How this connects to the week's learning outcomes
 
 ---
 
-CVI PKI Career Pathway — Foundations Phase
+## Challenges / Troubleshooting
+Document any issues encountered during the lab and how you resolved them.
+
+Examples:
+
+- Command errors
+- Missing files or dependencies
+- Verification failures and how you diagnosed them
+
+---
+
+## Artifacts
+List the files generated or submitted during this lab.
+
+Examples:
+
+- Any `.pem`, `.crt`, or `.key` files produced
+- Your completed lab write-up `.md` file
+- Screenshots stored in `assets/screenshots/`
+
+---
+
+*CVI PKI Career Pathway — Foundations Phase*
