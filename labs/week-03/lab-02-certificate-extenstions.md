@@ -1,155 +1,116 @@
-# Lab — Investigate Certificate Extensions
+# Lab — [Lab Title]
 
-## Goal
-
-This lab builds operational understanding of X.509 certificate extensions, which define how a certificate can be used and validated.
-
-You will:
-- Inspect certificate extensions using OpenSSL
-- Identify common certificate extensions
-- Understand how extensions control certificate behavior
-- Analyze how extensions impact TLS validation
+## Overview
+Briefly describe the purpose of this lab in your own words.
+What PKI concept or system behavior were you investigating?
 
 ---
 
-## Part 1 — Setup
+## Environment
+Document the environment used to complete the lab.
 
-### Prerequisites
-
-- OpenSSL installed
-- Access to a local terminal (Mac Terminal, Git Bash, or WSL)
-- Completion of **Lab 01 — Inspect Certificate Fields**
-
-All commands must be executed locally.  
-GitHub’s web interface cannot run OpenSSL commands.
+- Operating System:
+- Terminal Used:
+- OpenSSL Version (if applicable):
 
 ---
 
-## Part 2 — Execution Steps
+## Steps Performed
+Summarize the key steps you performed to complete the lab.
 
-### Step 1 — Create Artifact Directory
-From the root of your directory on your personal machine:
-- mkdir -p lab/03-week-03-certificate-anatomy/submissions/certificate-extensions
+Do **not copy the lab instructions**.
+Describe what you actually did.
 
----
-
-### Step 2 — Use the Certificate From Lab 01
-You will reuse the certificate retrieved in **Lab 01**
-
-Expected location:
-
-lab/03-week-03-certificate-anatomy/submissions/certificate-fields/leaf_cert.pem
-
-Confirm the file exists before continuing.
+1.
+2.
+3.
 
 ---
 
-### Step 3 — Inspect the Certificate Extensions
-Run the following command:
+## Results
+Include the important outputs or findings from the lab.
 
-openssl x509 -in lab/03-week-03-certificate-anatomy/submissions/certificate-fields/leaf_cert.pem -text -noout
+Examples may include:
 
-Scroll through the output until you find the **X509v3 extensions section.**
+- Command outputs
+- Certificate fields or values
+- Verification results
+- Screenshots (if applicable)
 
----
+If you include screenshots, store them in `assets/screenshots/` at the root of your repo and reference them here.
 
-### Step 4 — Identify Key Extensions
-Locate and record the following extensions:
+**How to embed an image:**
 
-**Subject Alternative Name (SAN)**
+**Option A — Terminal / Local Editor**
 
-Example:
+Save your screenshot to `assets/screenshots/` in your repo, then reference it using a relative path from your submission file:
 
-X509v3 Subject Alternative Name:
-DNS:google.com, DNS:www.google.com
+```markdown
+![Description of your screenshot](../../../assets/screenshots/your-filename.png)
+```
 
-This extension defines **which domains the certificate is valid for.**
+> The `../../../` moves up three levels: `submissions/` → `week-03/` → `labs/` → repo root, then into `assets/screenshots/`.
 
----
+**Option B — GitHub Web (Easiest)**
 
-### Key Usage
+Open your `.md` file on GitHub, click the pencil icon to edit, then **drag and drop your image directly into the text editor**. GitHub will upload it automatically and insert the correct link for you.
 
-Example:
+Example of what an embedded image looks like:
 
-X509v3 Key Usage:
-Digital Signature, Key Encipherment
-
-This extension defines **which cryptographic operations the certificate can perform.**
-
----
-
-### Extended Key Usage (EKU)
-Example:
-
-  X509v3 Extended Key Usage:
-  TLS Web Server Authentication
-
-This extension defines **what the certificate is allowed to authenticate.**
+```markdown
+![Certificate output showing SAN field](../../../assets/screenshots/san-field.png)
+```
 
 ---
 
-### Basic Constraints
-Example:
+## Key Findings
+Document the most important observations from the lab.
 
-  X509v3 Basic Constraints:
-  CA:FALSE
+Examples:
 
-This field determines whether the certificate can act as a **Certificate Authority.**
+- What you discovered about the certificate, key, or protocol
+- How a specific field or extension affected the outcome
+- What a validation result indicated
+- Any unexpected behavior or results
 
----
-
-## Part 3 — Observations
-Document the following in your **Week 3 lab notes**:
-- What domains appear in the SAN field
-- What operations are listed in Key Usage
-- What applications are listed in Extended Key Usage
-- Whether the certificate can issue other certificates
-- Why these extensions are important for TLS validation
+-
+-
+-
 
 ---
 
-### Submission (Portfolio Repo)
-Ensure the following file exists:
+## Explanation
+Explain **why the results matter**.
 
-lab/03-week-03-certificate-anatomy/submissions/certificate-extensions/
+Examples:
 
-Update certificate-extensions.md in your submissions folder with your observations.
-
-Your file should summarize the extensions you identified and what they mean.
-
----
-
-### Example Artifact Structure
-
-labs
-
-   03-week-03-certificate-anatomy
-   
-        submissions
-        
-          certificate-fields
-          
-            leaf_cert.pem
-            
-          certificate-extensions
-          
-            extensions-analysis.md
+- Why a specific field or extension is required
+- Why a validation succeeded or failed
+- What the result means in a real-world PKI context
+- How this connects to the week's learning outcomes
 
 ---
 
-## Stretch (Optional)
-Retrieve a certificate from a different website:
+## Challenges / Troubleshooting
+Document any issues encountered during the lab and how you resolved them.
 
-  openssl s_client -connect github.com:443 -showcerts
+Examples:
 
-Inspect the extensions and compare them to the certificate used in this lab.
-
-Questions to consider:
-- Do both certificates contain similar SAN entries?
-- Do both certificates allow the same Extended Key Usage?
-- Are there any additional extensions present?
+- Command errors
+- Missing files or dependencies
+- Verification failures and how you diagnosed them
 
 ---
 
-CVI PKI Career Pathway — Foundations Phase
+## Artifacts
+List the files generated or submitted during this lab.
 
+Examples:
+
+- Any `.pem`, `.crt`, or `.key` files produced
+- Your completed lab write-up `.md` file
+- Screenshots stored in `assets/screenshots/`
+
+---
+
+*CVI PKI Career Pathway — Foundations Phase*
