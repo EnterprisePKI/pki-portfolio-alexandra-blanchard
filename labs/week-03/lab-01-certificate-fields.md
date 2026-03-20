@@ -1,4 +1,4 @@
-# Lab — [Lab Title]
+# Lab — Certificate-Fields
 
 ## Overview
 Briefly describe the purpose of this lab in your own words.
