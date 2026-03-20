@@ -1,164 +1,116 @@
-# Lab — Detect Certificate Misconfigurations
+# Lab — [Lab Title]
 
-## Goal
-
-This lab builds operational understanding of **common certificate misconfigurations that cause TLS failures.**
-
-You will analyze certificate scenarios and determine why a certificate would fail validation.
-
-These types of misconfigurations are responsible for many real-world outages.
-
-You will practice identifying issues involving:
-- Missing **Subject Alternative Name (SAN)**
-- Incorrect **Extended Key Usage (EKU)**
-- **Expired certificates**
-- Broken certificate validation conditions
+## Overview
+Briefly describe the purpose of this lab in your own words.
+What PKI concept or system behavior were you investigating?
 
 ---
 
-## Part 1 — Setup
+## Environment
+Document the environment used to complete the lab.
 
-### Prerequisites
-- Completion of **Lab 01, Lab 02, and Lab 03**
-- Understanding of certificate fields and extensions
-- Access to your portfolio repository
-
-This lab focuses on **analysis and troubleshooting**, not generating new cryptographic artifacts.
+- Operating System:
+- Terminal Used:
+- OpenSSL Version (if applicable):
 
 ---
 
-## Part 2 — Execution Steps
+## Steps Performed
+Summarize the key steps you performed to complete the lab.
 
-### Step 1 — Create Artifact Directory
-From the root of your directory on your personal machine:
-- mkdir -p lab/03-week-03-certificate-anatomy/submissions/misconfiguration-analysis
+Do **not copy the lab instructions**.
+Describe what you actually did.
 
----
-
-## Part 3 — Misconfiguration Scenarios
-Analyze each scenario and determine **why the certificate would fail or cause problems in production systems.**
-
-Document your analysis in your repo in the submissions folder:
-
-   lab/03-week-03-certificate-anatomy/submissions/misconfiguration-analysis.md
+1.
+2.
+3.
 
 ---
 
-## Scenario 1 — Missing Subject Alternative Name
-A certificate contains the following information:
+## Results
+Include the important outputs or findings from the lab.
 
-  Subject: CN=example.com
+Examples may include:
 
-However, the certificate **does not contain a Subject Alternative Name (SAN)** extension.
+- Command outputs
+- Certificate fields or values
+- Verification results
+- Screenshots (if applicable)
 
-**Question**
+If you include screenshots, store them in `assets/screenshots/` at the root of your repo and reference them here.
 
-Would modern browsers trust this certificate?
+**How to embed an image:**
 
-Analysis
+**Option A — Terminal / Local Editor**
 
-Explain:
-- Why modern browsers require SAN
-- Why the Common Name alone is no longer sufficient
+Save your screenshot to `assets/screenshots/` in your repo, then reference it using a relative path from your submission file:
 
----
+```markdown
+![Description of your screenshot](../../../assets/screenshots/your-filename.png)
+```
 
-## Scenario 2 — Incorrect Extended Key Usage
-A certificate contains the following extension:
+> The `../../../` moves up three levels: `submissions/` → `week-03/` → `labs/` → repo root, then into `assets/screenshots/`.
 
-  Extended Key Usage: Client Authentication
+**Option B — GitHub Web (Easiest)**
 
-The certificate is being used on a **web server for HTTPS.**
+Open your `.md` file on GitHub, click the pencil icon to edit, then **drag and drop your image directly into the text editor**. GitHub will upload it automatically and insert the correct link for you.
 
-### Question
+Example of what an embedded image looks like:
 
-Would a browser accept this certificate for a web server?
-
-### Analysis
-
-Explain:
-- What Extended Key Usage defines
-- Why the correct EKU is required for TLS servers
+```markdown
+![Certificate output showing SAN field](../../../assets/screenshots/san-field.png)
+```
 
 ---
 
-## Scenario 3 — Expired Certificate
-The certificate validity period shows:
+## Key Findings
+Document the most important observations from the lab.
 
-Not Before: May 1 2022
-Not After:  May 1 2023
+Examples:
 
-The current date is **after May 1, 2023.**
+- What you discovered about the certificate, key, or protocol
+- How a specific field or extension affected the outcome
+- What a validation result indicated
+- Any unexpected behavior or results
 
-### Question
-What happens if this certificate is used today?
-
-### Analysis
-Explain:
-- Why expiration causes TLS validation to fail
-- Why certificate lifecycle management is critical
+-
+-
+-
 
 ---
 
-## Scenario 4 — Missing Intermediate Certificate
+## Explanation
+Explain **why the results matter**.
 
-A server presents a certificate during a TLS handshake, but the **intermediate certificate is not included in the chain.**
+Examples:
 
-### Question
-
-What error would a browser likely display?
-
-### Analysis
-
-Explain:
-- How certificate chains establish trust
-- Why intermediate certificates must be provided by servers
-  
----
-
-## Part 4 — Observations
-Your misconfiguration-analysis.md file should explain:
-- Why each certificate configuration fails
-- What TLS validation rule is being violated
-- How the issue could be fixed
+- Why a specific field or extension is required
+- Why a validation succeeded or failed
+- What the result means in a real-world PKI context
+- How this connects to the week's learning outcomes
 
 ---
 
-## Submission (Portfolio Repo)
-Ensure the following file exists:
+## Challenges / Troubleshooting
+Document any issues encountered during the lab and how you resolved them.
 
-lab/03-week-03-certificate-anatomy/submissions/misconfiguration-analysis.md
- 
-  Week 3 Lab 04 — Certificate misconfiguration analysis
+Examples:
 
----
-
-## Stretch (Optional)
-Research a **real certificate outage.**
-
-Examples include:
-- Let’s Encrypt DST Root CA expiration
-- Microsoft Teams certificate outage
-- Slack TLS certificate expiration
-
-Add a short summary explaining:
-- What caused the outage
-- What certificate issue occurred
-- How it was resolved
+- Command errors
+- Missing files or dependencies
+- Verification failures and how you diagnosed them
 
 ---
 
-## Why This Matters
-Most PKI outages are **not caused by broken cryptography.**
+## Artifacts
+List the files generated or submitted during this lab.
 
-They are caused by **certificate configuration and management mistakes, including:**
-- Expired certificates
-- Incorrect extensions
-- Missing intermediate certificates
-- Invalid hostname configuration
+Examples:
 
-Being able to quickly identify these problems is a core skill for **PKI engineers and security professionals.**
+- Any `.pem`, `.crt`, or `.key` files produced
+- Your completed lab write-up `.md` file
+- Screenshots stored in `assets/screenshots/`
 
 ---
 
-CVI PKI Career Pathway — Foundations Phase
+*CVI PKI Career Pathway — Foundations Phase*
