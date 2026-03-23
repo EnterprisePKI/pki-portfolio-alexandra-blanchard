@@ -1,116 +1,182 @@
-# Lab — Certificate-Fields
 
-## Overview
-Briefly describe the purpose of this lab in your own words.
-What PKI concept or system behavior were you investigating?
+Lab 3 —Lab 01 — Inspect X.509 Certificate Fields
 
+Overview
+
+
+To authenticate Googles certificates I first analyzed the first block of this certificate known as the leaf certificate. 
+
+This lab focused on generating architectural keys using OpenSSL.  The goal is to breakdown a certification generation and identify the version, serial number, signature algorithm, Issuer, Subject, Not Before, Not After, and Public Key Alogirthm. 
+
+
+Environment:
+
+The environment allowing this implementation is on a Windows x64 computer. 
+
+Operating System:
+In practice, the overall lab environment will stem from the Windows 11 operating system. . 
+
+Terminal Used: PowerShell with OpenSSL embedded
+OpenSSL Version - OpenSSL 3.6.1 27 Jan 2026 (Library: OpenSSL 3.6.1 27 Jan 2026)
+
+
+Steps Performed:
+
+First, the command line, openssl s_client -connect google.com:443 -showcerts, was typed into Powershell/OpenSSL.
+
+Next, the following items were identified:
+
+Version		             Version: 3
+Serial Number	
+Signature Algorithm	   sha256WithRSAEncryption
+Issuer		             No client certificate CA names sent
+Subject	               Google Trust Services LLC
+Not Before	           Feb 23 18:19:44 2026 GMT
+Not After	             May 18 18:19:43 2026 GMT
+Public Key Algorithm	EC, (prime256v1)
+
+The last step of the lab involved identifying the components of the certifications and their importance in the questions below.
+
+Command outputs:
+openssl s_client -connect google.com:443 -showcerts
+Connecting to 2607:f8b0:400a:800::200e
+CONNECTED(000001FC)
+depth=2 C=US, O=Google Trust Services LLC, CN=GTS Root R1
+verify error:num=20:unable to get local issuer certificate
+verify return:1
+depth=1 C=US, O=Google Trust Services, CN=WR2
+verify return:1
+depth=0 CN=*.google.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN=*.google.com
+   i:C=US, O=Google Trust Services, CN=WR2
+   a:PKEY: EC, (prime256v1); sigalg: sha256WithRSAEncryption
+   v:NotBefore: Feb 23 18:19:44 2026 GMT; NotAfter: May 18 18:19:43 2026 GMT
+-----BEGIN CERTIFICATE-----
+MIIONjCCDR6gAwIBAgIQHPsd95mzo2EQ05uOfTyoUzANBgkqhkiG9w0BAQsFADA7
+MQswCQYDVQQGEwJVUzEeMBwGA1UEChMVR29vZ2xlIFRydXN0IFNlcnZpY2VzMQww
+CgYDVQQDEwNXUjIwHhcNMjYwMjIzMTgxOTQ0WhcNMjYwNTE4MTgxOTQzWjAXMRUw
+EwYDVQQDDAwqLmdvb2dsZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARq
+UioGukuK4UVrGv1krpLXpbYrokAJSo5eJv0YcLJl6a1HMWlsZ4/ffzdnWsdBQ+Ko/
+TsH09hRxrBjMW85DwDUo4IMIzCCDB8wDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMM
+AoGCCsGAQUFBwMBMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFIyx0GFph3KJPZN2x
+uxIq+p5MHKMB8GA1UdIwQYMBaAFN4bHu15FdQ+NyTDIbvsNDltQrIwMFgGCCsGAQU
+FBwEBBEwwSjAhBggrBgEFBQcwAYYVaHR0cDovL28ucGtpLmdvb2cvd3IyMCUGCCs
+GAQUFBzAChhlodHRwOi8vaS5wa2kuZ29vZy93cjIuY3J0MIIJ+AYDVR0RBIIJ7zCC
+CeuCDCouZ29vZ2xlLmNvbYIWKi5hcHBlbmdpbmUuZ29vZ2xlLmNvbYIJKi5iZG4
+uZGV2ghUqLm9yaWdpbi10ZXN0LmJkbi5kZXaCEiouY2xvdWQuZ29vZ2xlLmNvbY
+IYKi5jcm93ZHNvdXJjZS5nb29nbGUuY29tghgqLmRhdGFjb21wdXRlLmdvb2dsZ
+S5jb22CCyouZ29v2xlLmNhggsqLmdvb2dsZS5jbIIOKi5nb29nbGUuY28uaW6CD
+iouZ29vZ2xlLmNvLmpwgg4qLmdvb2dsZS5jby51a4IPKi5nb29nbGUuY29tLmFy
+gg8qLmdvb2dsZS5jb20uYXWCDyouZ29vZ2xlLmNvbS5icoIPKi5nb29nbGUuY29t
+LmNvgg8qLmdvb2dsZS5jb20ubXiCDyouZ29vZ2xlLmNvbS50coIPKi5nb29nbGUu
+Y29tLnZuggsqLmdvb2dsZS5kZYILKi5nb29nbGUuZXOCCyouZ29vZ2xlLmZyggsq
+Lmdvb2dsZS5odYILKi5nb29nbGUuaXSCCyouZ29vZ2xlLm5sggsqLmdvb2dsZS5w
+bIILKi5nb29nbGUucHSCDyouZ29vZ2xlYXBpcy5jboIMKi5nc3RhdGljLmNughAq
+LmdzdGF0aWMtY24uY29tgg9nb29nbGVjbmFwcHMuY26CESouZ29vZ2xlY25hcHBz
+LmNughFnb29nbGVhcHBzLWNuLmNvbYITKi5nb29nbGVhcHBzLWNuLmNvbYIMZ2tl
+Y25hcHBzLmNugg4qLmdrZWNuYXBwcy5jboISZ29vZ2xlZG93bmxvYWRzLmNughQq
+Lmdvb2dsZWRvd25sb2Fkcy5jboIQcmVjYXB0Y2hhLm5ldC5jboISKi5yZWNhcHRj
+aGEubmV0LmNughByZWNhcHRjaGEtY24ubmV0ghIqLnJlY2FwdGNoYS1jbi5uZXSC
+C3dpZGV2aW5lLmNugg0qLndpZGV2aW5lLmNughFhbXBwcm9qZWN0Lm9yZy5jboIT
+Ki5hbXBwcm9qZWN0Lm9yZy5jboIRYW1wcHJvamVjdC5uZXQuY26CEyouYW1wcHJv
+amVjdC5uZXQuY26CF2dvb2dsZS1hbmFseXRpY3MtY24uY29tghkqLmdvb2dsZS1h
+bmFseXRpY3MtY24uY29tghdnb29nbGVhZHNlcnZpY2VzLWNuLmNvbYIZKi5nb29n
+bGVhZHNlcnZpY2VzLWNuLmNvbYIRZ29vZ2xldmFkcy1jbi5jb22CEyouZ29vZ2xl
+dmFkcy1jbi5jb22CEWdvb2dsZWFwaXMtY24uY29tghMqLmdvb2dsZWFwaXMtY24u
+Y29tghVnb29nbGVvcHRpbWl6ZS1jbi5jb22CFyouZ29vZ2xlb3B0aW1pemUtY24u
+Y29tghJkb3VibGVjbGljay1jbi5uZXSCFCouZG91YmxlY2xpY2stY24ubmV0ghgq
+LmZscy5kb3VibGVjbGljay1jbi5uZXSCFiouZy5kb3VibGVjbGljay1jbi5uZXSC
+DmRvdWJsZWNsaWNrLmNughAqLmRvdWJsZWNsaWNrLmNughQqLmZscy5kb3VibGVj
+Gljay5jboISKi5nLmRvdWJsZWNsaWNrLmNughFkYXJ0c2VhcmNoLWNuLm5ldIIT
+Ki5kYXJ0c2VhcmNoLWNuLm5ldIIdZ29vZ2xldHJhdmVsYWRzZXJ2aWNlcy1jbi5j
+b22CHyouZ29vZ2xldHJhdmVsYWRzZXJ2aWNlcy1jbi5jb22CGGdvb2dsZXRhZ3Nl
+cnZpY2VzLWNuLmNvbYIaKi5nb29nbGV0YWdzZXJ2aWNlcy1jbi5jb22CF2dvb2ds
+ZXRhZ21hbmFnZXItY24uY29tghkqLmdvb2dsZXRhZ21hbmFnZXItY24uY29tghhn
+b29nbGVzeW5kaWNhdGlvbi1jbi5jb22CGiouZ29vZ2xlc3luZGljYXRpb24tY24u
+Y29tgiQqLnNhZmVmcmFtZS5nb29nbGVzeW5kaWNhdGlvbi1jbi5jb22CFmFwcC1t
+ZWFzdXJlbWVudC1jbi5jb22CGCouYXBwLW1lYXN1cmVtZW50LWNuLmNvbYILZ3Z0
+MS1jbi5jb22CDSouZ3Z0MS1jbi5jb22CC2d2dDItY24uY29tgg0qLmd2dDItY24u
+Y29tggsybWRuLWNuLm5ldIINKi4ybWRuLWNuLm5ldIIUZ29vZ2xlZmxpZ2h0cy1j
+bi5uZXSCFiouZ29vZ2xlZmxpZ2h0cy1jbi5uZXSCDGFkbW9iLWNuLmNvbYIOKi5h
+ZG1vYi1jbi5jb22CGSouZ2VtaW5pLmNsb3VkLmdvb2dsZS5jb22CFGdvb2dsZXNh
+bmRib3gtY24uY29tghYqLmdvb2dsZXNhbmRib3gtY24uY29tgh4qLnNhZmVudXAu
+Z29vZ2xlc2FuZGJveC1jbi5jb22CDSouZ3N0YXRpYy5jb22CFCoubWV0cmljLmdz
+dGF0aWMuY29tggoqLmd2dDEuY29tghEqLmdjcGNkbi5ndnQxLmNvbYIKKi5ndnQy
+LmNvbYIOKi5nY3AuZ3Z0Mi5jb22CECoudXJsLmdvb2dsZS5jb22CFioueW91dHVi
+ZS1ub2Nvb2tpZS5jb22CCyoueXRpbWcuY29tggphaS5hbmRyb2lkggthbmRyb2lk
+LmNvbYINKi5hbmRyb2lkLmNvbYITKi5mbGFzaC5hbmRyb2lkLmNvbYIEZy5jboIG
+Ki5nLmNuggRnLmNvggYqLmcuY2+CBmdvby5nbIIKd3d3Lmdvby5nbIIUZ29vZ2xl
+LWFuYWx5dGljcy5jb22CFiouZ29vZ2xlLWFuYWx5dGljcy5jb22CCmdvb2dsZS5j
+b22CEmdvb2dsZWNvbW1lcmNlLmNvbYIUKi5nb29nbGVjb21tZXJjZS5jb22CCGdn
+cGh0LmNuggoqLmdncGh0LmNuggp1cmNoaW4uY29tggwqLnVyY2hpbi5jb22CCHlv
+dXR1LmJlggt5b3V0dWJlLmNvbYINKi55b3V0dWJlLmNvbYIRbXVzaWMueW91dHVi
+ZS5jb22CEyoubXVzaWMueW91dHViZS5jb22CFHlvdXR1YmVlZHVjYXRpb24uY29t
+ghYqLnlvdXR1YmVlZHVjYXRpb24uY29tgg95b3V0dWJla2lkcy5jb22CESoueW91
+dHViZWtpZHMuY29tggV5dC5iZYIHKi55dC5iZYIaYW5kcm9pZC5jbGllbnRzLmdv
+b2dsZS5jb22CEyouYW5kcm9pZC5nb29nbGUuY26CEiouY2hyb21lLmdvb2dsZS5j
+boIWKi5kZXZlbG9wZXJzLmdvb2dsZS5jboIVKi5haXN0dWRpby5nb29nbGUuY29t
+MBMGA1UdIAQMMAowCAYGZ4EMAQIBMDYGA1UdHwQvMC0wK6ApoCeGJWh0dHA6Ly9j
+LnBraS5nb29nL3dyMi9vUTZueXI4RjBtMC5jcmwwggEFBgorBgEEAdZ5AgQCBIH2
+IHzAPEAdwAOV5S8866pPjMbLJkHs/eQ35vCPXEyJd0hqSWsYcVOIQAAAZyL8ZDNA
+AAEAwBIMEYCIQDd+/i3Oczmi6zQzvPITmmRGakL4LRablSlODU8UzkktAIhAJPJ
+Qb0i7WocXe2hpG1LsVVayklKQLUG6hkr84b82PAnAHYAyzj3FYl8hKFEX1vB3fvJ
+bvKaWc1HCmkFhbDLFMMUWOcAAAGci/GRBQAABAMARzBFAiEAm9EtuiwNjX5cUInG
+a70WnT25yHJbwPP0/4rlIu4N2b4CIES42P33JhZ3GAlx5et/rWh0o4Sh3zDuP7LW
+WjMxVJoZMA0GCSqGSIb3DQEBCwUAA4IBAQBNmrjWnKrjk4T8yJNxMGjvX2f3nsgV
+yxx6VhAlhChfVwjHIjC0wuoT+T+RbYb5M0fm/lEpOSJa+089MzrT9mPpmziYnJ4Q
+Mmjqx+ntpa466fter3JzGY9R0cIUyyBKzhlAbT7lbtMMn4n63X0NWygJrrRHEiSV
+DaN0wZ/a2xDH6ylFbEmQHyhrQLv88GuIvp4ER6D8iimX8GuEl37UIPkQpcKyvPOv
+TiuMfGYxsUytbnW3CWEwNk8TYd4Bk68oEmDjgph0XzjzT3g1qA8Cihe69mPtP8Wy
+5FBXqUt0hCY6RqeYuY2jFi+7RW7OJ7Dxzfd35FpyfxADEQVEYN82upht
+-----END CERTIFICATE-----
+ ---
+Server certificate
+subject=CN=*.google.com
+issuer=C=US, O=Google Trust Services, CN=WR2
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: ecdsa_secp256r1_sha256
+Negotiated TLS1.3 group: X25519MLKEM768
+---
+SSL handshake has read 7722 bytes and written 1621 bytes
+Verification error: unable to get local issuer certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Protocol: TLSv1.3
+Server public key is 256 bit
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 20 (unable to get local issuer certificate)
 ---
 
-## Environment
-Document the environment used to complete the lab.
+## Observations
 
-- Operating System:
-- Terminal Used:
-- OpenSSL Version (if applicable):
+1. Who issued the certificate? After a few tries [verify error:num=20:unable to get local issuer certificate
+verify return:1
+depth=1 C=US, O=Google Trust Services, CN=WR2
+verify return:1
+depth=0 CN=*.google.com
+verify return:1] Google Trust Services issued the certificate to google.com.
+2. What domain or organization does it represent? The entity represented is Google.com.
+3. When does it expire? The certificate expires on May 18 18:19:43 2026 GMT.
+4. What public key algorithm is used? The public key algorithm is not in its usual format; however, in this instance, it is presented as: PKEY: EC, (prime256v1).
+5. Why does the Issuer field matter in a PKI system?  The issuer field matters because it identifies the CA that issued the 
 
----
 
-## Steps Performed
-Summarize the key steps you performed to complete the lab.
 
-Do **not copy the lab instructions**.
-Describe what you actually did.
+Why is a specific field or extension required?  The specific is required because -connect is required to connect to the website, and -showcerts is required to fulfill the demand of retrieving all of the certificates tied to that website.
 
-1.
-2.
-3.
+Why does a validation succeed or fail? Everything worked in this instance.
+What does the result mean in a real-world PKI context? In Fintech, authentication and verified identity of every entity is imperative to keeping finances safe from virtual intruders. 
+How does this connect to the week's learning outcomes? The main goal of this week's learning outcomes is structured around the structure of digital certificates. We identify the key components of certificates to increase the ability to monitor and respond diligently to certificate-related expirations, incidents, and vulnerabilities. 
 
----
 
-## Results
-Include the important outputs or findings from the lab.
-
-Examples may include:
-
-- Command outputs
-- Certificate fields or values
-- Verification results
-- Screenshots (if applicable)
-
-If you include screenshots, store them in `assets/screenshots/` at the root of your repo and reference them here.
-
-**How to embed an image:**
-
-**Option A — Terminal / Local Editor**
-
-Save your screenshot to `assets/screenshots/` in your repo, then reference it using a relative path from your submission file:
-
-```markdown
-![Description of your screenshot](../../../assets/screenshots/your-filename.png)
-```
-
-> The `../../../` moves up three levels: `submissions/` → `week-03/` → `labs/` → repo root, then into `assets/screenshots/`.
-
-**Option B — GitHub Web (Easiest)**
-
-Open your `.md` file on GitHub, click the pencil icon to edit, then **drag and drop your image directly into the text editor**. GitHub will upload it automatically and insert the correct link for you.
-
-Example of what an embedded image looks like:
-
-```markdown
-![Certificate output showing SAN field](../../../assets/screenshots/san-field.png)
-```
-
----
-
-## Key Findings
-Document the most important observations from the lab.
-
-Examples:
-
-- What you discovered about the certificate, key, or protocol
-- How a specific field or extension affected the outcome
-- What a validation result indicated
-- Any unexpected behavior or results
-
--
--
--
-
----
-
-## Explanation
-Explain **why the results matter**.
-
-Examples:
-
-- Why a specific field or extension is required
-- Why a validation succeeded or failed
-- What the result means in a real-world PKI context
-- How this connects to the week's learning outcomes
-
----
-
-## Challenges / Troubleshooting
-Document any issues encountered during the lab and how you resolved them.
-
-Examples:
-
-- Command errors
-- Missing files or dependencies
-- Verification failures and how you diagnosed them
-
----
-
-## Artifacts
-List the files generated or submitted during this lab.
-
-Examples:
-
-- Any `.pem`, `.crt`, or `.key` files produced
-- Your completed lab write-up `.md` file
-- Screenshots stored in `assets/screenshots/`
-
----
-
-*CVI PKI Career Pathway — Foundations Phase*
+Challenges / Troubleshooting:
+Although this lab did not require troubleshooting it did permit instances to implement the ability to build strong attention to detail with the ability to identify inconsistencies and potential issues if they were to arise with an Issuer/CA, subject, and/or entity.
