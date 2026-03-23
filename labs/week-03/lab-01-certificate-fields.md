@@ -12,7 +12,7 @@ serial number, signature algorithm, Issuer, Subject, Not Before, Not After, and 
 ## Environment
 - OS: The environment allowing this implementation is on a Windows 11 (x64) computer. 
 - Terminal used (Mac Terminal / Git Bash / WSL): PowerShell with OpenSSL embedded
-- OpenSSL version (`openssl version`):
+- OpenSSL version:
 OpenSSL Version - OpenSSL 3.6.1 27 Jan 2026 (Library: OpenSSL 3.6.1 27 Jan 2026)
 
 ---
