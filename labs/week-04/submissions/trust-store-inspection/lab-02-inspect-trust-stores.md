@@ -15,8 +15,6 @@ Certification practice proceeded by corresponding with the certification manager
 ---
 
 ## Steps Performed
-Summarize the key steps you performed to complete the lab.
-Do not copy the lab instructions — describe what you actually did.
 
 1. I began the process of locating the trust store in my OS by first creating the directory [certmgr.msc].
 2. I then proceeded to locate the number of root certificates in my certificate manager. 
