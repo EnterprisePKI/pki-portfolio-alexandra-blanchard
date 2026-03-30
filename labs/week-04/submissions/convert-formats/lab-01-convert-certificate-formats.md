@@ -15,8 +15,6 @@ This week, we investigated  .der, .pem, and pfx packages. Diving deeper into how
 — 
 
 ## Steps Performed
-Summarize the key steps you performed to complete the lab.
-Do not copy the lab instructions — describe what you actually did.
 
 1. The lab began with entering the command [openssl s_client -connect google.com:443 -showcerts] with the input as [Connecting to 2607:f8b0:400a:800::200e
 CONNECTED(000001FC)
