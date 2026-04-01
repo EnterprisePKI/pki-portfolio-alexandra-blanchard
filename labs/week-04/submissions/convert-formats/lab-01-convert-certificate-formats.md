@@ -16,15 +16,7 @@ This week, we investigated  .der, .pem, and pfx packages. Diving deeper into how
 
 ## Steps Performed
 
-1. The lab began with entering the command [openssl s_client -connect google.com:443 -showcerts] with the input as [Connecting to 2607:f8b0:400a:800::200e
-CONNECTED(000001FC)
-depth=2 C=US, O=Google Trust Services LLC, CN=GTS Root R1
-verify error:num=20:unable to get local issuer certificate
-verify return:1
-depth=1 C=US, O=Google Trust Services, CN=WR2
-verify return:1
-depth=0 CN=*.google.com
-verify return:1
+1. The lab began with entering the command [openssl s_client -connect google.com:443 -showcerts].
 ---
 Certificate chain
  0 s:CN=*.google.com
