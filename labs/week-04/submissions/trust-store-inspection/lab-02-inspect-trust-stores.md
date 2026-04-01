@@ -85,6 +85,7 @@ The key observations observed in this lab are listed as:
 •no peer certificate available
 •This TLS version forbids renegotiation.
 •No ALPN negotiated.
+rather than observations about the trust store itself. These are output lines from the s_client session — they are not the key findings of a trust store inspection lab. Replace these with observations about what you discovered: how many CAs are pre-installed, why root CAs are self-signed, and what it means that trust is automatically inherited from the trust store.
 
 ---
 
@@ -93,8 +94,12 @@ Explain why the results matter.
 
 - Why does your browser trust a certificate from a website you have never visited before?
 A certificate issued by the certificate authority was forwarded to DigiCert. This is why the chain was accepted.
+ The correct answer is that the browser checks whether the server's certificate chains back to a root CA already installed in the system trust store — no forwarding involved. DigiCert is one of those trusted roots, not a relay.
+
+
 - What would happen if an enterprise's internal root CA were NOT in the trust store?
 The trust store would ensure that the PKI fails immediately and prevents it from proceeding.
+The precise answer is: browsers and applications would show a security warning or refuse the connection because the certificate chain cannot be validated to a trusted root.
 
 - What surprised you about how many roots are pre-installed on your system?
 To see 49 root certs, let me know the roots installed are required for the safety of the system.
