@@ -117,7 +117,7 @@ Thumbprint                                Subject
 
  and after cleaning up the directory, validated the removal of the root [Get-ChildItem Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*CVI-Lab*" } | Remove-Item]
 
-    Directory: C:\Users\Cyber\labs\week-04\submissions\install-validate
+>>\labs\week-04\submissions\install-validate
 
 
 Mode                 LastWriteTime         Length Name
@@ -151,10 +151,14 @@ subject=CN=test.cvi-lab.local, O=CyberVisionaries Institute, C=US
 ## Explanation
 Explain why the results matter.
 
-- The test root CA self-signed because ot was self-created, recogniozed by immediately by the .key, .crt, and root already in the trust store. These items were identified by the file name and icon in the output.
+- The test root CA self-signed because ot was self-created, recognized immediately by the .key, .crt, and root already in the trust store. These items were identified by the file name and icon in the output.
 - The changed noticed in the system is the local Trust Store kept the root CA in the certificate manager.
 - In an enterprise environment, the one responsible for PKI’s controls what root CAs are installed on employee machines.
 - If an attacker can install a root CA on a device it opens the entireenterpise to annoying breeches of security for every department, in every way.
+
+- he correct technical answer is that a certificate is self-signed when its Subject and Issuer fields are identical — and this is confirmed in your Results output, where both Subject and Issuer show: CN=CVI-Lab-Root-CA, O=CyberVisionaries Institute, C=US. The X509v3 Basic Constraints: critical CA:TRUE field also confirms it is a CA certificate.
+
+The attacker root CA security answer describes the risk as "annoying breeches of security." This understates the threat significantly. Installing a rogue root CA enables full man-in-the-middle attacks on all HTTPS traffic — the device will show a padlock with no warnings, but all encrypted communications can be intercepted and decrypted. This is one of the most impactful attacks possible against a managed endpoint.
 
 ---
 
