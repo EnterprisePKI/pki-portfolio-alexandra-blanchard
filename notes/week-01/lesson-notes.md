@@ -45,7 +45,7 @@ Misconception 2: PKI is assigned to a certain group of technical infrastructures
 Web security- It still must identify itself to a CA to tell the surveillance system ti is reliable to continue its service.
 Internal enterprise systems must honor the TLS handshake to fully operate in the correct group policy.
 Cloud environments operate using short-lives cert to monitor traffic securely.
-DevOps workflows  still operate under the need of having a hash assigned to the certs to allow the public and private key to operate behind the scene for trustworthy communication to take place. 
+DevOps workflows  still operate under the need of having a hash assigned to the certs to allow the public and private key to operate behind the scenes for trustworthy communication to take place. 
 
 Identity + Trust + Verification
 Identity is declared (CN), a trust anchor (CA) asserts the presented identity, and verification is enforced before the certificate can move up the chain.
