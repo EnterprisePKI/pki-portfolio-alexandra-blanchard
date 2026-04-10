@@ -29,21 +29,27 @@ The best way to guard against outages is to compare CSR to a signed certificate.
 Field
 Abbreviation
 Value in Your CSR
+
 Common Name
 CN
 lab01.cvi.internal
+
 Organization
 O
 CyberVisionaries Institute
+
 Organizational Unit
 OU
 PKI Career Pathway
+
 Country
 C
 US
+
 State
 ST
 California
+
 Locality
 L
 San Francisco
