@@ -60,7 +60,7 @@ The issuer  (who signs the certificate for the Subject) matches the Subject (Pub
 
 - What did the public key comparison (diff) show, and what does that mean?
 
-  diff /tmp/cert_pubkey.pem /tmp/key_pubkey.pem
+diff /tmp/cert_pubkey.pem /tmp/key_pubkey.pem
 
 InputObject          SideIndicator
 
