@@ -63,7 +63,7 @@ The issuer  (who signs the certificate for the Subject) matches the Subject (Pub
   diff /tmp/cert_pubkey.pem /tmp/key_pubkey.pem
 
 InputObject          SideIndicator
------------          -------------
+
 /tmp/key_pubkey.pem  =>
 /tmp/cert_pubkey.pem <=
 
