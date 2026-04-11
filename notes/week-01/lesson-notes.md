@@ -7,14 +7,14 @@ In a stringent enterprise, where a strict certificate lifestyle is mandatory it 
 
 3. Technical Breakdown
 Definition
-1. A digital trust encompasses the CIA (Confidentiality, Integrity, and Identity)  of a PKI networking system.
-2. Identity is who the entity is, what it is, as it presents itself through the PKI system.
+1. A digital trust encompasses the  (Confidentiality, Integrity, and Identity)  of a PKI networking system.
+2. Identify who the entity is, what it is, as it presents itself through the PKI system.
 3. Authentication is expected as it validates through two pieces of information (i.e., identity and a key).
 4. Authorization is what the entity has access to as it moves through the certificate lifecycle.
 5. A private key must be kept safe since it is used to sign or decrypt information. 
 6. A public key is safe enough for it to be used in the form of signature verification or encryption.
 7. A digital certificate binds the public key to the subject, while also being verified by the Central Authority.
-8. Encryption protects data in transit and at rest.  
+8. Ensuring encryption protects certificate data in transit and at rest is the top priority of all enterprises.
 
 Components
 Digital Signature- Digitally signed by a CA
@@ -45,7 +45,7 @@ Misconception 2: PKI is assigned to a certain group of technical infrastructures
 Web security- It still must identify itself to a CA to tell the surveillance system ti is reliable to continue its service.
 Internal enterprise systems must honor the TLS handshake to fully operate in the correct group policy.
 Cloud environments operate using short-lives cert to monitor traffic securely.
-DevOps workflows  still operate under the need of having a hash assigned to the certs to allow the public and private key to operate behind the scenes for trustworthy communication to take place. 
+DevOps workflows still operate under the need of having a hash assigned to the certs to allow the public and private key to operate behind the scenes for trustworthy communication to take place. 
 
 Identity + Trust + Verification
 Identity is declared (CN), a trust anchor (CA) asserts the presented identity, and verification is enforced before the certificate can move up the chain.
