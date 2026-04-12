@@ -2,13 +2,7 @@
 
 ## Screenshot Evidence
 
-Capture a screenshot of the Certification Path (certificate chain) from your browser.
-
-Save it as:
-
 assets/screenshots/week-01/trust-chain-validation.png
-
-Embed the screenshot below:
 
 ![Trust Chain Validation](../../assets/screenshots/week-01/trust-chain-validation.png)
 
@@ -67,11 +61,11 @@ Forward Secrecy	Yes (with most browsers) and also identified "This site works on
 ## Reflection
 
 In 3–5 sentences, explain:
-- Why the Root certificate is called a trust anchor?
+- Why is the Root certificate called a trust anchor?
 - Based on the financial system, the Root certificate added the security of CAA for additional security and removal of any mishaps that could happen on the CA's end.
 - 
-- How validation walks the certificate chain?
-- The details of the validation walk looks like this:
+- How does validation walk the certificate chain?
+- The details of the validation walk look like this:
 - 1	Sent by server	cws-main-akamai.jpmorgan.com
 2	Sent by server	DigiCert EV RSA CA G2
 3	In trust store	DigiCert Global Root G2   Self-signed
