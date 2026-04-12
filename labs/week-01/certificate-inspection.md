@@ -2,12 +2,8 @@
 
 ## Screenshot Evidence
 
-1. Capture a screenshot of the certificate details in your browser.
-2. Save it as:
 
 assets/screenshots/week-01/certificate-inspection.png
-
-3. Embed the screenshot below:
 
 ![Certificate Inspection](../../assets/screenshots/week-01/certificate-inspection.png)
 
@@ -21,24 +17,14 @@ https://www.asee.org
 Common Name (CN)	WE1
 
 **Valid from:**  
-Thursday, February 26, 2026 at 4:01:29 PM
+Thursday, February 26, 2026, at 4:01:29 PM
 
 **Valid until:**  
-Wednesday, May 27, 2026 at 6:01:16 PM
+Wednesday, May 27, 2026, at 6:01:16 PM
 
 **Signature algorithm:**  
 Certificate	2adc80a966c27aca34daa141c65980f81f94f114524b9c965d4d92b13d5710e2
 Public Key	3f8ca522be17408ccd1a2bedd8f780ea5baf014f9b1c81cc531f7116ef3ced49
----
-
-## Subject Alternative Names (SAN Entries)
-
-List at least 2–3 SAN entries:
-
-- 
-- 
-- 
-
 ---
 
 ## Observations
