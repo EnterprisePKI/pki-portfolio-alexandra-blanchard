@@ -1,17 +1,9 @@
-# Week 1 Reflection Prompts
+Week 1 Reflection
 
-Submit your answers in your portfolio repo:
-`reflections/week-01.md`
+This week, I learned that public keys are public-facing and private keys must remain hidden away from the public eye.
 
-## Prompts
-1. In your own words, what is **digital trust**?
-2. What is the difference between **identity** and **authentication**?
-3. Explain **public key vs private key** like you’re teaching a beginner.
-4. What does a certificate *prove*? What does it *not* prove?
-5. Where did you see PKI in your daily life this week?
-6. What concept is still unclear?
+The most challenging part of this week is aligning the existence of digital trust and the roles they hold in fintech, blockchain, and cryptocurrency. Learning the systems and concepts in a real-world application reinforced the rationale behind layering additional PKI polices.
 
-## Minimum Standard
-- 6–10 thoughtful sentences per prompt (quality > length)
-- Use headings or numbering
-- Be specific (avoid “it makes things secure” without explanation)
+In real-world systems, it is important to build vocabulary to know the difference between strict PKI systems, binding authenticity data to the correct trusted authority, is a concept inherent in areas such as FinTech daily.
+
+The best way to explain this topic to a non-technical audience is to use their ATM card to show how the bank identifies them with it (name and driver's license connected). Authentication comes in the form of them pushing their pin number in, and their authorization is in the form of the accounts they have access to on that machine.
