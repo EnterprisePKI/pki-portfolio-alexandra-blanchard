@@ -2,13 +2,13 @@
 # Lab 02 — Check Certificate Revocation Status with OCSP
 
 ## Overview
-The lab allows for operations to take place to prove if the OCSP is trustworthy.  The differences presented between the CRL Distribution and the OCPS provided the opportunity to focus on the revocation and the OCSP response.
+The lab allows operations to be conducted to determine whether the OCSP is trustworthy.  The differences presented between the CRL Distribution and the OCPS provided the opportunity to focus on the revocation and the OCSP response.
 The PKI system behavior being investigated this week is the performance of an OCSP real-time status. 
 
 ---
 
 ## Environment
-- Operating System: In practice, the overall lab environment will stem from the Windows 11 operating system. In practice, the overall lab environment will stem from the Windows 11 operating system.
+- Operating System: In practice, the overall lab environment will stem from the Windows 11 operating system. In practice, the overall lab environment will be based on the Windows 11 operating system.
 - Terminal Used: PowerShell with OpenSSL embedded
 - OpenSSL Version: OpenSSL 3.6.1 27 Jan 2026 (Library: OpenSSL 3.6.1 27 Jan 2026):
 
