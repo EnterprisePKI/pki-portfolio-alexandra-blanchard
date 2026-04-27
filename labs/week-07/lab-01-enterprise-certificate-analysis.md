@@ -1,4 +1,4 @@
-# Lab — [Lab Title]
+# Lab 01 — Analyze a Live Enterprise Certificate Deployment
 
 ## Overview
 Currently investigating the underlying design of a public-key infrastructure. Demonstrating the inspection of a certificate chain and a practical deployment in real-time.
