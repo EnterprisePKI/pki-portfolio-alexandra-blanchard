@@ -4,9 +4,9 @@
 ## Overview
 To authenticate Google's certificates, I first analyzed the first block of this certificate, known as the leaf certificate. 
 
-This lab focused on generating architectural keys using OpenSSL.  
+**This lab focused on generating architectural keys using OpenSSL.  
 The goal is to break down a certification generation and identify the version, 
-serial number, signature algorithm, Issuer, Subject, Not Before, Not After, and Public Key Algorithm. 
+serial number, signature algorithm, Issuer, Subject, Not Before, Not After, and Public Key Algorithm. **
 ---
 
 ## Environment
