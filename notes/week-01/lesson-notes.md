@@ -2,11 +2,11 @@ Week 1 Lesson Notes — Digital Trust & Identity
 1. Core Concept
 Digital Trust & Identity are the fundamental components of PKI’s infrastructure. It involves a system involving a public key (public-facing), a private key (placed in safekeeping), along with the non-negotiable steps for encryption (for security), and a chain of trust for protocol. 
 
-2. Why It Matters
+3. Why It Matters
 In a stringent enterprise, where a strict certificate lifestyle is mandatory it top priority is to operate through cryptography, policy, and verification. Enterprises in industries such as Grid Operators, DOD, or Telecom services each depend greatly on the fundamental components of these weeks as it demands an ongoing, audit-level of attention. Missing the alignment of a cert's identity, authentication, or authorization can trigger regulatory fines and disrupt enterprise services.
 
-3. Technical Breakdown
-Definition
+4. Technical Breakdown
+Definitions
 1. A digital trust encompasses the  (Confidentiality, Integrity, and Identity)  of a PKI networking system.
 2. Identify who the entity is, what it is, as it presents itself through the PKI system.
 3. Authentication is expected as it validates through two pieces of information (i.e., identity and a key).
