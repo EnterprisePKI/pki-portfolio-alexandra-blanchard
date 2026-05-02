@@ -4,9 +4,7 @@
 
 ## Overview
 
-Initially, the lab creates three certificates using OpenSSL commands.
- 
-The system behavior being investigated presents itself as a drill to show how short-lived certs operate, how an already-expired cert responds, and how a replacement certificate provides an alternative to the expired one.
+Initially, the lab creates three certificates using OpenSSL commands. The system behavior being investigated is presented as a drill to show how short-lived certs operate, how an already-expired cert responds, and how a replacement certificate serves as an alternative to the expired one.
 ---
 
 ## Environment
@@ -54,7 +52,7 @@ The replacement certificate retained an ok, provided a “notBefore and notAfter
 ## Key Findings
 Document the most important observations from the lab.
 
-The lab provided a detailed engagement meeting for the creation of a short-lived certificate.
+The lab held a detailed engagement meeting to create a short-lived certificate.
 Followed by an expired cert and a new key creation for the replacement cert.
 •The combined results show the cert can’t be used for a secure TLS and is unable to operate within a chain of trust (to a trusted CA). 
 
@@ -67,14 +65,16 @@ Explain why the results matter.
 
 Outages are still plausible if the lack of predictable renewals and regulatory evidence is not addressed by PCI DSS automated alerts. Another consequence of outages can stem from PKI engineers working manually, undiscoverable certs, and an overlooked short-lived certificate. 
 
-
 - What is the difference between renewal and replacement, and when would you choose each?
+- 
 To renew a cert means the cert has not yet expired, and it has validity. Whereas, the replacement of a cert is required when certs are no longer valid and expired.
 
 - How would you use `openssl x509 -checkend` in a real monitoring script?
+- 
 After pulling the notBefore and notAfter (openssl x509 -in labs/week-05/submissions/expiration-stretch/test_cert_replacement.pem -dates -noout), the next command to evaluate the maintenance of the cert is openssl x509 -in labs/week-05/submissions/expiration-stretch/test_cert_replacement.pem -checkend 0.
 
 - What does "certificate inventory" mean, and why is it necessary at enterprise scale?
+- 
 A certificate inventory is mandatory on an enterprise scale. Although the CRL is a part of the inventory, automated systems and certified lifecycle management create reports  to root out missing and overlooked certs to avoid enterprise-wide outages.
 ---
 
