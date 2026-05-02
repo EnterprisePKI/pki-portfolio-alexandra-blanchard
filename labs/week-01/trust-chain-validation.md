@@ -30,16 +30,8 @@ DNS Certification Authority Authorization (CAA) Policy found for this domain.
 
 ## Trust Anchor Verification
 
-Is the Root CA marked as trusted by your system?
-
-<!-- Yes / No -->
-
-If yes, explain where that trust comes from (OS/browser root store).
-Trusted	- Yes
-Coming from:
-Mozilla  Apple  Android  Java  Windows 
-
-If no, explain what warning or behavior occurred.
+The Root CA is marked as trusted by the system because
+Windows 
 
 ---
 
@@ -48,29 +40,25 @@ If no, explain what warning or behavior occurred.
 Document three observations about the certificate.
 
 ### Observation 1
-I noticed the path took steps beginning at the main domain. Then the server moved it to the CA, where it ended at the trust store, Global Root G2.
+Operating a digital trust using a production system algorithm in the chain of trust is what I observed. Next, analyze the process of inventory to see how the path begins from the main domain. As it proceeded to the server, it was moved to the CA, where it ended at the trust store, Global Root G2.
 
 ### Observation 2
-I noticed it was self-signed and followed the CAA policy.
+The evidence of verification was self-signed and followed the CAA policy. 
 
 ### Observation 3
 As for the browser trust jpmorganchase.com utilizes:
-Forward Secrecy	Yes (with most browsers) and also identified "This site works only in browsers with SNI support.".
+Forward Secrecy	Yes (with most browsers), and also identified "This site works only in browsers with SNI support.
+
 ---
-
 ## Reflection
-
-In 3–5 sentences, explain:
-- Why is the Root certificate called a trust anchor?
-- Based on the financial system, the Root certificate added the security of CAA for additional security and removal of any mishaps that could happen on the CA's end.
+- The Root certificate is called a trust anchor because parsing SAN confirms gostnames and blocks the SAN if anything is missing or wrong.
+Therefore, verifying  contract identity to solidify the handshake taking place. Within a strict PKI environment (a financial system, for example)
+The Root certificate adds security of CAA for additional security and removal of any mishaps that could happen on the CA's end.
 - 
-- How does validation walk the certificate chain?
+- Validation of the certificate chain is like managing logistics. Confirming who issued it, who vouches for the invoice, and what policy constraints it entails.
 - The details of the validation walk look like this:
-- 1	Sent by server	cws-main-akamai.jpmorgan.com
+1	Sent by server	cws-main-akamai.jpmorgan.com
 2	Sent by server	DigiCert EV RSA CA G2
 3	In trust store	DigiCert Global Root G2   Self-signed
   
-- What would happen if the Root CA were not trusted?
-- If the Root CA were not trusted the validation conditions would no longer be evaluated.
-
-Use your own words.
+- If the Root CA were not trusted, the validation conditions would no longer be evaluated.
