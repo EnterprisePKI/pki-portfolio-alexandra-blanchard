@@ -7,7 +7,6 @@
 Initially, the lab creates three certificates using OpenSSL commands.
  
 The system behavior being investigated presents itself as a drill to show how short-lived certs operate, how an already-expired cert responds, and how a replacement certificate provides an alternative to the expired one.
-
 ---
 
 ## Environment
@@ -18,10 +17,7 @@ The system behavior being investigated presents itself as a drill to show how sh
 ---
 
 ## Steps Performed
-Summarize the key steps you performed to complete the lab.
-Do not copy the lab instructions — describe what you actually did.
-
-The PKI identification process began by generating a test key and a CSR, which created a short validity window.
+1. The PKI identification process began by generating a test key and a CSR, which created a short validity window.
 2. After reading the validity window, the certificate was determined as valid. Understanding the mechanism of key creation and validation is crucial during high-volume transactions. 
 3. Simulating an expired certificate to address the operational business environment in real-time magnifies a list of dates by producing the windows of service through an OpenSSL command. 
 4. Fundamentally, the workflow of replacing an expired cert requires a new private key, a new CSR with a new key,
@@ -30,16 +26,17 @@ The PKI identification process began by generating a test key and a CSR, which c
 ---
 
 ## Results
-Include the important outputs or findings from the lab.
-
-- What did the `notBefore` and `notAfter` dates look like for your short-lived certificate?
+- The `notBefore` and `notAfter` dates, for your short-lived certificate, look like:
+    
 The notBefore=Apr  9 19:45:32 2026 GMT
 notAfter=Apr  9 19:45:32 2027 GMT
 
-- What output did `openssl x509 -checkend` produce for each certificate?
+- The output stated as `openssl x509 -checkend` produced the following for each certificate:
+  
 The output protocol enabled “Certificate will not expire”.
 
-- What error message did `openssl verify` return for the expired certificate?
+- The error message stated that `openssl verify` returned the following output for the expired certificate:
+
 OpenSSL verify produced the following message :
 CN=shortlived.cvi.internal, O=CyberVisionaries Institute, C=US
 error 18 at 0 depth lookup: self-signed certificate
