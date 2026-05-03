@@ -1,116 +1,36 @@
-# Lab — [Lab Title]
+Lab 1 — Symmetric Encryption (Confidentiality)
 
-## Overview
-Briefly describe the purpose of this lab in your own words.
-What PKI concept or system behavior were you investigating?
+##Overview
+In regulated environments, operational understanding of encryption and decryption of files verifies production to ensure the same trust anchors exist. Testing for checks in the same network path and TLS layers.
 
----
+##Environment
+The environment allowing this implementation is on a Windows x64 computer. 
+Operating System: In practice, the overall lab environment will stem from the Windows 11 operating system. 
+Terminal Used: PowerShell with OpenSSL embedded PowerShell with OpenSSL embedded.
+OpenSSL Version - OpenSSL 3.6.1 27 Jan 2026 (Library: OpenSSL 3.6.1 27 Jan 2026)
 
-## Environment
-Document the environment used to complete the lab.
+##Results
+Use of the AES-256 encryption verifies the integrity of the decrypted files. If the wrong password is used, an error message flags this issue requiring debugging to remediate 
+using OpenSSL outputs and troubleshooting techniques.
 
-- Operating System:
-- Terminal Used:
-- OpenSSL Version (if applicable):
 
----
+##Examples
+Encrypted tokens and sessions discovered in public keys increase security. When private keys are kept in an HSM, it removes the opportunities for leaks.
+The validation result indicated OK from the outcome. Encryption is only as trustworthy when the certificate advertises the public key. 
 
-## Steps Performed
-Summarize the key steps you performed to complete the lab.
 
-Do **not copy the lab instructions**.
-Describe what you actually did.
+##Any unexpected behavior or results
+The output results are aligned with a PKI-secure data transaction.
+ 
 
-1.
-2.
-3.
+##Examples
+A specific field is required to determine the OpenSSL commands path and outcome by creating a workflow that will deliver the assigned output based on the end od the command (i.e., openssl enc -aes-256-cbc -salt -pbkdf2
+-in labs/02-week-02-cryptography-fundamentals/submissions/encrypted/plaintext.txt
+-out labs/02-week-02-cryptography-fundamentals/submissions/encrypted/plaintext.txt.enc).
 
----
+Validation succeeded because the symmetric session key was negotiated after the handshake.
+In a real-world PKI context, enterprises use certificates anytime a machine or user requires proof of who they are. This connects to the week's learning outcomes because of the necessity of strict PKI environments requiring web security to users using the internet and intranet on their behalf. The device, or services account, must follow group-policy rules, stores, and verify keys before traffic is accepted.
 
-## Results
-Include the important outputs or findings from the lab.
 
-Examples may include:
-
-- Command outputs
-- Certificate fields or values
-- Verification results
-- Screenshots (if applicable)
-
-If you include screenshots, store them in `assets/screenshots/` at the root of your repo and reference them here.
-
-**How to embed an image:**
-
-**Option A — Terminal / Local Editor**
-
-Save your screenshot to `assets/screenshots/` in your repo, then reference it using a relative path from your submission file:
-
-```markdown
-![Description of your screenshot](../../../assets/screenshots/your-filename.png)
-```
-
-> The `../../../` moves up three levels: `submissions/` → `week-03/` → `labs/` → repo root, then into `assets/screenshots/`.
-
-**Option B — GitHub Web (Easiest)**
-
-Open your `.md` file on GitHub, click the pencil icon to edit, then **drag and drop your image directly into the text editor**. GitHub will upload it automatically and insert the correct link for you.
-
-Example of what an embedded image looks like:
-
-```markdown
-![Certificate output showing SAN field](../../../assets/screenshots/san-field.png)
-```
-
----
-
-## Key Findings
-Document the most important observations from the lab.
-
-Examples:
-
-- What you discovered about the certificate, key, or protocol
-- How a specific field or extension affected the outcome
-- What a validation result indicated
-- Any unexpected behavior or results
-
--
--
--
-
----
-
-## Explanation
-Explain **why the results matter**.
-
-Examples:
-
-- Why a specific field or extension is required
-- Why a validation succeeded or failed
-- What the result means in a real-world PKI context
-- How this connects to the week's learning outcomes
-
----
-
-## Challenges / Troubleshooting
-Document any issues encountered during the lab and how you resolved them.
-
-Examples:
-
-- Command errors
-- Missing files or dependencies
-- Verification failures and how you diagnosed them
-
----
-
-## Artifacts
-List the files generated or submitted during this lab.
-
-Examples:
-
-- Any `.pem`, `.crt`, or `.key` files produced
-- Your completed lab write-up `.md` file
-- Screenshots stored in `assets/screenshots/`
-
----
-
-*CVI PKI Career Pathway — Foundations Phase*
+##Challenges / Troubleshooting
+The output results are aligned with a PKI-secure data transaction.
