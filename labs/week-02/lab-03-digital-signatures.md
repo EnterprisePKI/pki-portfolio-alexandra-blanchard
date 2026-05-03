@@ -1,106 +1,40 @@
-# Lab — Digital Signatures (Integrity + Authenticity)
 
-## Goal
 
-This lab builds operational understanding of digital signatures and the security properties of integrity and authenticity.
+Lab 3 — Digital Signatures (Integrity + Authenticity)
 
-You will:
+##Overview
+In strict PKI and secure API environments, this lab identifies how digital signatures are the backbone to deliver security based on integrity and authentication.  
 
-- Generate a signing key pair
-- Sign a file using a private key
-- Verify the signature using the public key
-- Observe how tampering invalidates a signature
+##Environment
+The environment allowing this implementation is on a Windows x64 computer. 
+Operating System: In practice, the overall lab environment will be based on Windows 11. 
+Terminal Used: PowerShell with OpenSSL embedded PowerShell with OpenSSL embedded.
+OpenSSL Version - OpenSSL 3.6.1 27 Jan 2026 (Library: OpenSSL 3.6.1 27 Jan 2026)
 
-This is the same mechanism used to sign certificates in PKI systems.
 
----
+##Results
+Findings from the command (openssl genpkey -algorithm RSA…) produced a private_key.pem output. Extracting the public key from the leaf certificate (openssl pkey…), signing the file with an AES-sha256, and watching the validation loop close in real time with a verification OK.
+The results of the outputs can be found in Week-02/assets/submissions:
+artifact.sig
+artifact.txt
+private_key.pem
+public_key.pem
 
-## Part 1 — Setup
 
-### Prerequisites
+##Example
+The discovery made is that the actual digital signature bytes produced by the private key tell verifiers how to check the signature and to verify that it has not been modified.
 
-- OpenSSL installed
-- Access to a local terminal
-- Week 2 portfolio folder created
+##Explanation
+The lab displays the need for both hashing and asymmetric cryptography since digital signatures demand a resilient verification.
 
-All commands must be executed locally.
+##Examples
+In a real-world, strict-PKI context, the three blocks involved in the certificate chain revolve around the leaf (carries the public key), the intermediate certificate (safety layers so the root can stay offline), and the root certificate, which is trusted automatically. If the root were ever compromised, it would undermine the entire hierarchy.
 
----
+##Challenges / Troubleshooting
+No issues were encountered during the lab. 
 
-## Part 2 — Execution Steps
-
-### Step 1 — Create Artifact Directory
-
-From the root of your repository:
-
-mkdir -p labs/02-week-02-cryptography-fundamentals/submissions/signatures
-
-### Step 2 — Create a File to Sign
-echo "Week 2 Digital Signature Lab - CVI" > labs/02-week-02-cryptography-fundamentals/submissions/signatures/artifact.txt
-
-### Step 3 — Generate a Private Key
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 \
-  -out labs/02-week-02-cryptography-fundamentals/submissions/signatures/private_key.pem
-  
-### Step 4 — Extract the Public Key
-openssl pkey \
-  -in labs/02-week-02-cryptography-fundamentals/submissions/signatures/private_key.pem \
-  -pubout \
-  -out labs/02-week-02-cryptography-fundamentals/submissions/signatures/public_key.pem
-  
-### Step 5 — Sign the File
-openssl dgst -sha256 \
-  -sign labs/02-week-02-cryptography-fundamentals/submissions/signatures/private_key.pem \
-  -out labs/02-week-02-cryptography-fundamentals/submissions/signatures/artifact.sig \
-  labs/02-week-02-cryptography-fundamentals/submissions/signatures/artifact.txt
-
-This produces a digital signature file.
-
-### Step 6 — Verify the Signature
-openssl dgst -sha256 \
-  -verify labs/02-week-02-cryptography-fundamentals/submissions/signatures/public_key.pem \
-  -signature labs/02-week-02-cryptography-fundamentals/submissions/signatures/artifact.sig \
-  labs/02-week-02-cryptography-fundamentals/submissions/signatures/artifact.txt
-
-Expected output:
-
-Verified OK
-
-### Step 7 — Tamper With the File
-echo "tampered" >> labs/02-week-02-cryptography-fundamentals/submissions/signatures/artifact.txt
-
-Now verify again using the same command.
-
-The verification should fail.
-
-## Part 3 — Observations
-Document the following in your Week 2 notes:
-- Why verification succeeds before tampering
-- Why verification fails after modification
-- Why digital signatures require both hashing and asymmetric cryptography
-- How this relates to certificate signing in PKI
-
-## Submission (Portfolio Repo)
-Ensure the following files exist:
-
-labs/02-week-02-cryptography-fundamentals/submissions/signatures/
-  artifact.txt
-  artifact.sig
-  public_key.pem
-  
-### Important
-
-### Do NOT commit private_key.pem.
-
-Private keys must never be stored in version control.
-
-Delete the private key after completing verification if necessary.
-
-Commit and push your changes.
-
-## Stretch (Optional)
-- Inspect the public key file. What format is it in?
-- Try signing with a different hash algorithm.
-- Research how a Certificate Authority signs an X.509 certificate.
-
-CVI PKI Career Pathway — Foundations Phase
+##Artifacts
+artifact.sig
+artifact.txt
+private_key.pem
+public_key.pem
