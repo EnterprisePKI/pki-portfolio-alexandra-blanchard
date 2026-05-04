@@ -124,7 +124,7 @@ SSL-Session:
 
 
 Verification results for certificate transparency logs were unsuccessful when attempting to use https://crt.sh: the page displays 502 Bad Gateway. 
-Nevertheless, I understand I would have been provided a list of certifications issued to this domain. Along with verification of recent CA’s, and their history.
+Nevertheless, I understand I would have been provided a list of certifications issued to this domain. Along with verification of recent CA’s and their history.
 
 ---
 
@@ -146,21 +146,14 @@ x-amz-cf-pop: (lacks Amazon CloudFront, so it will not populate)
 ## Explanation
 The results matter because cf-ray and x-amz-cf-pop will populate differently when crossing different regions and time zones. Since the server shows Akamai on the edge, it also identified the x-cache for Cloudflare as expired.
 
-Examples:
-
-- Why the issuer is important in PKI
-- Why SAN is required for modern TLS validation
-- Why the certificate chain validates successfully
-- Why a misconfiguration would cause a failure
-
 ---
 
 ## Challenges / Troubleshooting
-THe first challenge entailed the inputting  of the correct command line for OpenSSL to run. Restructuring each command to deliver proper output are the steps that were taken to complete the portion of the lab requiring an OpenSSL command line. Document any issues encountered during the lab and how you resolved them.
+The first challenge entailed the inputting  of the correct command line for OpenSSL to run. Restructuring each command to deliver proper output are the steps that were taken to complete the portion of the lab requiring an OpenSSL command line. Document any issues encountered during the lab and how you resolved them.
 
 Examples:
 
-This command error exposed mechanisms aimed to provide sufficient technical detail to produce the correct outcome; however you will notice the difference between the two commands and which terminal it addresses. 
+This command error exposed mechanisms aimed to provide sufficient technical detail to produce the correct outcome; however, you will notice the difference between the two commands and which terminal it addresses. 
 I openssl x509 -in enterprise_cert.pem -noout -text | grep -A10 "Subject Alternative Name
 *Linux above/Windows(OpenSSL) below
 openssl x509 -in enterprise_cert.pem -noout -text |    Select-String -Pattern 'Subject Alternative Name' -Context 0,10
