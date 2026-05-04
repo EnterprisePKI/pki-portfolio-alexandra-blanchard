@@ -111,6 +111,14 @@ No challenges were present in this lab.
 ---
 
 ## Artifacts
-No artifacts were created in this lab.
-
+OpenSSL.jpg
+PEM to DER.jpg
+PEM.jpg
+Restored PEM.jpg
+certmgr.msc. viewjpg.jpg
+certutil output.jpg
+diff output.jpg
+fingerprint comparison.jpg
+test_bundle.pfx1.jpg
+test_bundle1.pfx
 
