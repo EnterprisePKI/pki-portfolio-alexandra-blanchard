@@ -1,60 +1,24 @@
-# Week X Lesson Notes — [Topic Title]
+Week 4 Lesson Notes — Certificate Formats and Trust Stores
 
-## 1. Core Concept
+1. Core Concept
+Certificate operations convert to build out a full chain when verifying with OpenSSL. A certificate conversion is a change control meant to preserve information. 
 
-Explain the foundational concept clearly and practically.
-
----
-
-## 2. Why It Matters
-
-How this concept appears in real enterprise environments.
+2. Why It Matters
+Knowing how to convert a certificate between formats invites the process to convert, re-parse fields, and verify round-trip integrity. When Active Directory deployment is being pushed to different computer models across an organization, it requires the skill of certificate conversion for each system.
 
 
-m trust store by default. This should be noted in your write-up — it is not a failure, but it does reflect an important distinction between OpenSSL trust and the Windows trust store.
+3. Technical Breakdown
+Components
+
+Convert a certificate
+Locate and inspect the trust store
+Install a self-signed root CA
+Remove the test root CA
 
 
+4. Common Misconceptions
+Misconception 1- PEM, DER, and PFX are different kinds of certificates.
+Misconception 2- If a certificate is valid, the system will trust it.
 
-
-. The lab began with entering the command [openssl s_client -connect google.com:443 -showcerts] with the input as [Connecting to 2607:f8b0:400a:800::200e
-CONNECTED(000001FC)
-depth=2 C=US, O=Google Trust Services LLC, CN=GTS Root R1
-verify error:num=20:unable to get local issuer certificate
-verify return:1
-depth=1 C=US, O=Google Trust Services, CN=WR2
-verify return:1
-depth=0 CN=*.google.com
-verify return:1
-
----
-
-## 3. Technical Breakdown
-
-- Definition
-- Components
-- Flow
-- Trust implications
-
----
-
-## 4. Common Misconceptions
-
-- Misconception 1
-- Misconception 2
-
----
-
-## 5. Where This Shows Up
-
-- Web security
-- Internal enterprise systems
-- Cloud environments
-- DevOps workflows
-
----
-
-## Mental Model
-
-Short summary that ties the week back to:
-
-Identity + Trust + Verification
+5. Where This Shows Up
+In cloud environments, PEM is most common in cloud load balancers, DER can be found in Java, and PFX shows up when importing certs into Windows. Windows enterprise integration will require a package with cert + key + chin into a PFX package.
