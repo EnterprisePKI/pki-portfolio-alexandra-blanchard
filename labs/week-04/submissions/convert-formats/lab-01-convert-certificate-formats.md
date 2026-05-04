@@ -16,13 +16,15 @@ This week, we investigated  .der, .pem, and pfx packages. Diving deeper into how
 
 ## Steps Performed
 
-1. The lab began with entering the command [openssl s_client -connect google.com:443 -showcerts].
+1. The lab began with entering the command [openssl s_client -connect...].
 ---
 Certificate chain
  0 s:CN=*.google.com
    i:C=US, O=Google Trust Services, CN=WR2
    a:PKEY: EC, (prime256v1); sigalg: sha256WithRSAEncryption
    v:NotBefore: Mar  9 08:36:15 2026 GMT; NotAfter: Jun  1 08:36:14 2026 GMT
+
+   
 -----BEGIN CERTIFICATE-----
 MIIOODCCDSCgAwIBAgIRAJ2c7jsU0d1hEMyhbSTO6C8wDQYJKoZIhvcNAQELBQAw
 OzELMAkGA1UEBhMCVVMxHjAcBgNVBAoTFUdvb2dsZSBUcnVzdCBTZXJ2aWNlczEM
@@ -469,11 +471,9 @@ Shrouded Keybag: PBES2, PBKDF2, AES-256-CBC, Iteration 2048, PRF hmacWithSHA256]
 ---
 
 ## Results
-Include the important outputs or findings from the lab.
-
 - The .pem file provided the cert output in its original format, but the .der format provides a pop-up window with the details of the certificate, utilizing three tabs to deliver the information.
 - The results of the .der file produced a Windows box of the certificate information.
-- The conversions PEM → DER → PEM produced a binary code for DER, then back to readable side a file entitled .pemrestored displays the Windows-created certificate back to its original text editor file.
+- The conversions PEM → DER → PEM produced a binary code for DER, then back to a readable side, a file entitled .pemrestored displays the Windows-created certificate back to its original text editor file.
 - Once the PFX was verified, the following output was displayed:
 MAC: sha256, Iteration 2048
 MAC length: 32, salt length: 16
@@ -485,8 +485,6 @@ Shrouded Keybag: PBES2, PBKDF2, AES-256-CBC, Iteration 2048, PRF hmacWithSHA256
 ---
 
 ## Key Findings
-Document the most important observations from the lab.
-
 • The hash-based message authentication code with the SHA256.
 • The alignment between PKCS7 Encrypted data and Shrouded Keybag verifies the Certificate bag.
 • I noticed the cryptographic security mechanisms in concert throughout the cert transitions.
@@ -494,10 +492,8 @@ Document the most important observations from the lab.
 ---
 
 ## Explanation
-Explain why the results matter.
-
 - The PFX requires a password to confirm the confidentiality of the private key. 
-- Distributing symmetric keys generally comes in the form of a PEM file, which is used for Linux platforms, a DER file is used for Java applications, and a PFX file would be used for Windows.
+- Distributing symmetric keys generally comes in the form of a PEM file, which is used for Linux platforms, a DER file is used for Java applications, and a PFX file is used for Windows.
 Exposing private keys is harmful to all security infrastructures.
 
 ---
@@ -505,15 +501,15 @@ Exposing private keys is harmful to all security infrastructures.
 ## Challenges / Troubleshooting
 Error:
 -in labs/week-04/submissions/convert-formats/leaf_cert.pem \
--in : The term '-in' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included,
-verify that the path is correct and try again.
+-in: The term '-in' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included,
+Verify that the path is correct and try again.
 At line:1 char:3
 +   -in labs/week-04/submissions/convert-formats/leaf_cert.pem \
 +   ~~~
-    + CategoryInfo          : ObjectNotFound: (-in:String) [], CommandNotFoundException
-    + FullyQualifiedErrorId : CommandNotFoundException
+    + CategoryInfo          : ObjectNotFound: (-in: String) [], CommandNotFoundException
+    + FullyQualifiedErrorId: CommandNotFoundException
 
 Resolve:
-The solution was tied to identifying the correct path of the submissions folder. Once the path was corrected all other commands outputted correctly.
+The solution was tied to identifying the correct path of the submissions folder. Once the path was corrected, all other commands outputted correctly.
 ---
 
