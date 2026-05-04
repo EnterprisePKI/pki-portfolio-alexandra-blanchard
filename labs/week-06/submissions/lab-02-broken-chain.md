@@ -1,20 +1,25 @@
 
 Lab 02 — Diagnose a Broken Certificate Chain
+
 Week 6 · PKI Incident Diagnosis & Troubleshooting CVI PKI Career Pathway — Phase 1 Foundations
 
 Incident Summary
+
 Target system: Radiology imaging platform (simulated via incomplete-chain.badssl.com) Diagnosed by: Alex B. 
 Date of diagnosis: 4/13/26
 
 What failed:
+
 Certificate expired because the After dates are in the past (NotAfter: Apr 12 23:59:59 2015 GMT, NotAfter: Feb 11 23:59:59 2029 GMT, and NotAfter: May 30 10:48:38 2020 GMT).
 
 Evidence
+
 The X.509 identified the failure of the TLS handshake as follows:
 SSL handshake has read 5003 bytes and written 1675 bytes
 Verification error: certificate has expired
 
 Once connected to:
+
 104.154.89.105
 CONNECTED(000001FC)
 depth=2 C=GB, ST=Greater Manchester, L=Salford, O=COMODO CA Limited, CN=COMODO RSA Certification Authority
